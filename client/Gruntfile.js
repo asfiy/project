@@ -64,7 +64,7 @@ module.exports = function (grunt) {
             },
             proxies: [
                 {
-                    context: '/nda-ticket/api',
+                    context: '/server',
                     host: 'localhost',
                     port: 8080,
                     https: false,
