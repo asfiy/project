@@ -5,18 +5,19 @@
     'use strict';
 
     angular.module('project').controller('DesignerRegistrationController',designerRegistrationController);
-    designerRegistrationController.$inject =['$scope','$http'];
+    designerRegistrationController.$inject =['$scope','$http','$state'];
 
-    function designerRegistrationController($scope,$http){
+    function designerRegistrationController($scope,$http,$state){
         $scope.step1= true;
         $scope.step2= false;
+        $scope.designerRegistration={};
         $scope.onStep1Completion = function(designerRegistration){
-            $scope.step1 = false;
-            $scope.step2 = true;
-            $http({method:'POST',url:'/server/designerRegistration/register',data:designerRegistration}).then(function (result){
-                console.log('in con');
+            $http({method:'POST',url:'/server/registration/registerDesigner',data:designerRegistration}).then(function (result){
+                $scope.step1 = false;
+                $scope.step2 = true;
             }).catch(function () {
-console.log("in error");            });
+                console.log("in error");
+            });
         };
         $scope.onStep2Completion = function(){
             $scope.step2 = false;
@@ -32,5 +33,9 @@ console.log("in error");            });
             }
         };
         console.log($scope.files);
+        $scope.onCancel = function(){
+            $state.go('home');
+
+        }
     }
 })();

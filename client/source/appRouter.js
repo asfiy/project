@@ -16,6 +16,10 @@
                 url: '',
                 template: '<ui-view />'
             })
+            .state('home',{
+                url:'/home',
+                templateUrl: 'homepage/HomePage.html'
+            })
             .state('login',{
                 url:'/login',
                 templateUrl: 'homepage/HomePage.html'

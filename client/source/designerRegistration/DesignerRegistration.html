@@ -8,33 +8,31 @@
     <label class="control-label required-field">Full Name</label>
 
     <div class="form-group">
-        <input type="text" class="form-control" ng-model="name"  name="designerRegistration.fullName" required/>
+        <input type="text" class="form-control" ng-model="designerRegistration.fullName"  name="fullName" required/>
     </div>
 </div>
     <div class="col-lg-4 col-lg-offset-4">
         <label class="control-label required-field">Mobile Number</label>
 
     <div class="form-group">
-        <input type="text" class="form-control" ng-model="mobileNumber"  name="designerRegistration.mobileNumber" required/>
+        <input type="text" class="form-control" ng-model="designerRegistration.mobileNumber"  name="mobileNumber" required/>
     </div>
 </div>
     <div class="col-lg-4 col-lg-offset-4">
         <label class="control-label required-field">Email Address</label>
 
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="email"  name="designerRegistration.emailAddress" required/>
+            <input type="text" class="form-control" ng-model="designerRegistration.emailAddress"  name="emailAddress" required/>
         </div>
     </div>
 
     <div class="col-lg-4 col-lg-offset-4 pull-right">
-        <div>
 <button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)">
     Next
 </button>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" ng-click="onCancel()">
                 Cancel
             </button>
-        </div>
     </div>
 
 </div>
