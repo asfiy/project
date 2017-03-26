@@ -13,7 +13,7 @@ img {
 
 /*----------------------------------------header-styles---------------------------------------*/
 #header {
-    background-color: transparent;
+    background-color: #36404a;
     margin: 0;
     padding: 0;
     position: relative;
@@ -24,18 +24,7 @@ img {
     overflow: hidden;
     padding: 41px 10px 27px;
 }
-#header div a.logo {
-    float: left;
-    margin: 0 0 0 29px;
-    padding: 0;
-    width: auto;
-}
-#header div a.logo img {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: auto;
-}
+
 #header div ul {
     display: inline-block;
     float: right;
@@ -53,59 +42,16 @@ img {
     width: auto;
 }
 #header div ul li a {
-    color: aqua;
-    font-family: lato-regular-webfont;
-    font-size: 28px;
-    font-weight: normal;
-    line-height: 15px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
     margin: 0;
     padding: 0;
     text-align: center;
     text-transform: uppercase;
 }
-#header div ul li.selected a, #header div ul li.selected a:hover {
-    color: #cb3362;
-}
-#header div ul li a:hover, #header div ul li.menu:hover ul li a {
-    color: #c8c10d;
-}
-#header div ul li ul li a {
-    color: #cb3362;
-    font-family: lato-regular-webfont;
-    font-size: 15px;
-    font-weight: normal;
-    line-height: 15px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    text-transform: uppercase;
-}
-#header div ul li.menu {
-    min-height: 35px;
-    z-index: 80;
-}
-#header div ul li.menu ul {
-    display: block;
-    float: none;
-    left: -99999px;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 24px;
-    width: 106px;
-    z-index: 90;
-}
-#header div ul li.menu:hover ul.primary, #header div ul li.menu ul#selected.primary {
-    left: -30px;
-}
-#header div ul li.menu:hover ul.secondary, #header div ul li.menu ul#selected.secondary {
-    left: -27px;
-}
-#header div ul li.menu ul li {
-    float: none;
-    margin: 0;
-    padding: 0;
-}
+#header div ul li a:hover{color:#31c3ee;text-decoration:none;}
 /*----------------------------------------body-home-styles---------------------------------------*/
 #body.home {
     margin: 0;
@@ -1188,4 +1134,28 @@ linear-gradient(90deg,#31eeda,#31c3ee);
     margin-top: 20px;
     padding-bottom: 100px;
     height:505px;
+}
+.headerElements a{
+    position: relative;
+    display: block;
+    padding: 43px 27px;
+    color: #fff;
+    background: transparent;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: .3s;
+}
+div.card {
+     width: 1050px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     text-align: center;
+    margin:0 auto;
+ }
+
+
+div.container {
+    padding: 10px;
 }
