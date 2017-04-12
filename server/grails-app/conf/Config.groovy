@@ -1,15 +1,16 @@
-// locations to search for config files that get merged into the main config;
-// config files can be ConfigSlurper scripts, Java properties files, or classes
-// in the classpath in ConfigSlurper format
+import grails.util.Environment
+/* locations to search for config files that get merged into the main config;
+   config files can be ConfigSlurper scripts, Java properties files, or classes
+   in the classpath in ConfigSlurper format
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+   grails.config.locations = [ "classpath:${appName}-config.properties",
+                               "classpath:${appName}-config.groovy",
+                               "file:${userHome}/.grails/${appName}-config.properties",
+                               "file:${userHome}/.grails/${appName}-config.groovy"]
 
-// if (System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
+   if (System.properties["${appName}.config.location"]) {
+      grails.config.locations << "file:" + System.properties["${appName}.config.location"]
+   } */
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 
@@ -59,7 +60,11 @@ grails {
     }
 }
 
+grails.databinding.dateFormats = ['yyyy-MM-dd', 'yyyy-MM-dd HH:mm:ss.S', "yyyy-MM-dd'T'hh:mm:ss'Z'"]
 
+if (Environment.current.name == "local-dev") {
+    grails.config.locations = ["classpath:local-dev-config.properties"]
+}
 grails.converters.encoding = "UTF-8"
 // scaffolding templates configuration
 grails.scaffolding.templates.domainSuffix = 'Instance'
@@ -86,6 +91,9 @@ grails.hibernate.pass.readonly = false
 grails.hibernate.osiv.readonly = false
 
 environments {
+    local-dev {
+        grails.serverURL = "http://localhost:9000"
+    }
     development {
         grails.logging.jul.usebridge = true
     }

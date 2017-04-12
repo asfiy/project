@@ -1,4 +1,7 @@
 package server
+
+import org.codehaus.groovy.grails.web.json.JSONObject
+
 import static org.springframework.http.HttpStatus.OK
 
 class RegistrationController {
@@ -7,9 +10,13 @@ class RegistrationController {
     def registrationService
     def index() { }
 
-    def register() {
-        log.error(request.JSON)
-        registrationService.registerDesigner(request.JSON)
+    def registerDesigner() {
+        DesignerInformation designerInformation = new DesignerInformation()
+        def information = new JSONObject(request.JSON)
+        bindData(designerInformation,information)
+        registrationService.registerDesigner(designerInformation)
         respond status:OK
     }
+
+
 }

@@ -20,14 +20,31 @@
                 url:'/home',
                 templateUrl: 'homepage/HomePage.html'
             })
-            .state('login',{
-                url:'/login',
-                templateUrl: 'homepage/HomePage.html'
+            .state('designerLogin',{
+                url:'/designerLogin',
+                templateUrl: 'designerLogin/DesignerLogin.html',
+                controller:'DesignerLoginController'
             })
             .state('designerRegistration',{
                 url:'/designerRegistration',
                 templateUrl: 'designerRegistration/DesignerRegistration.html',
                 controller:'DesignerRegistrationController'
             })
+            .state('cart',{
+                url:'/cart',
+                templateUrl:'cart/Cart.html',
+                controller:'CartController'
+            })
+            .state('cancelOrder',{
+                url:'/cancel',
+                templateUrl:'cancel/CancelOrder.html',
+                controller:'CancelOrderController'
+            })
+            .state('productUpload',{
+                url:'/UploadProducts',
+                templateUrl:'upload/UploadProducts.html',
+                controller:'UploadProductsController'
+            })
+
     }
 })();

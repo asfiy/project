@@ -6,7 +6,7 @@
 
     var REST_URL = "/api", moduleName = "project";
     angular.module(moduleName, [
-        'ui.router','ngResource','ng.shims.placeholder','ngFileUpload'
+        'ui.router','ngResource','ngFileUpload','ng.shims.placeholder','checklist-model'
     ]);
     var app = angular.module(moduleName);
         angular.element(document).ready(function() {

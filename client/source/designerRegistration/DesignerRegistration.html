@@ -10,28 +10,87 @@
     <div class="col-lg-4 col-lg-offset-4 pull-left">
         <div class="pull-left"><label>Step 1</label></div>
     </div>
+        <div class="col-lg-8">
 
-    <div class="col-lg-4 col-lg-offset-4">
-    <label class="control-label required-field">Full Name</label>
-
-    <div class="form-group">
-        <input type="text" class="form-control" ng-model="designerRegistration.fullName"  name="fullName" required/>
-    </div>
-</div>
-    <div class="col-lg-4 col-lg-offset-4">
-        <label class="control-label required-field">Mobile Number</label>
+        <label class="pull-left">Please provide your personal Information</label>
+            </div>
+    <div class="col-lg-8">
+    <label class="control-label required-field pull-left">Full Name</label>
 
     <div class="form-group">
-        <input type="text" class="form-control" ng-model="designerRegistration.mobileNumber"  name="mobileNumber" required/>
+        <input type="text" class="form-control" ng-model="designerInformation.fullName"  name="fullName" required/>
     </div>
 </div>
-    <div class="col-lg-4 col-lg-offset-4">
-        <label class="control-label required-field">Email Address</label>
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">User Name</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="designerInformation.userName"  name="userName" required/>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Password</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="designerInformation.password"  name="password" required/>
+            </div>
+        </div>
+    <div class="col-lg-8">
+        <label class="control-label required-field pull-left">Mobile Number</label>
+
+    <div class="form-group">
+        <input type="number" class="form-control" ng-model="designerInformation.mobileNumber"  name="mobileNumber" required/>
+    </div>
+</div>
+    <div class="col-lg-8">
+        <label class="control-label required-field pull-left">Email Address</label>
 
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="designerRegistration.emailAddress"  name="emailAddress" required/>
+            <input type="text" class="form-control" ng-model="designerInformation.emailAddress"  name="emailAddress" required/>
         </div>
     </div>
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Address</label>
+
+            <div class="form-group">
+                <textarea required cols="500" rows="3" class="form-control" ng-model="designerInformation.address"></textarea>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">City</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control"  name="fullName" ng-model="designerInformation.city" required/>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">State</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control"  name="state" ng-model="designerInformation.state" required/>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Country</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control"  name="fullName" ng-model="designerInformation.country" required/>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Pin Code</label>
+
+            <div class="form-group">
+                <input type="number" class="form-control"  name="fullName" ng-model="designerInformation.pinCode" required/>
+            </div>
+        </div>
+
 
     <div class="col-lg-4 col-lg-offset-4 pull-right">
 <button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)">
@@ -41,21 +100,36 @@
                 Cancel
             </button>
     </div>
-
-</div>
+    </div>
 
 
 <div class="container-fluid" align="center" ng-if="step2">
         <div class="col-xs-12 pull-left">
             <div class="pull-left"><label>Step 2</label></div>
         </div>
+    <div class="col-lg-8">
+
+        <label class="pull-left">Please provide your Store Information</label>
+    </div>
+
+    <div class="col-xs-12 pull-left">
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Store Contact Number</label>
+
+            <div class="form-group">
+                <input type="number" class="form-control"  name="storeContactNumber" ng-model="designerInformation.storeContactNumber" required/>
+            </div>
+        </div>
+    </div>
+
         <div class="col-xs-12 pull-left">
 
         <div class="col-lg-8">
             <label class="control-label required-field pull-left">Address</label>
 
             <div class="form-group">
-                <textarea required cols="500" rows="3" class="form-control" ng-model="labelDescription"></textarea>
+                <textarea required cols="500" rows="3" class="form-control" ng-model="designerInformation.storeAddress"></textarea>
             </div>
         </div>
 </div>
@@ -65,7 +139,7 @@
                 <label class="control-label required-field pull-left">City</label>
 
                 <div class="form-group">
-                    <input type="text" class="form-control"  name="fullName" required/>
+                    <input type="text" class="form-control"  name="storeCity" ng-model="designerInformation.storeCity" required/>
                 </div>
             </div>
         </div>
@@ -75,7 +149,7 @@
                 <label class="control-label required-field pull-left">Country</label>
 
                 <div class="form-group">
-                    <input type="text" class="form-control"  name="fullName" required/>
+                    <input type="text" class="form-control"  name="storeCountry" ng-model="designerInformation.storeCountry" required/>
                 </div>
             </div>
         </div>
@@ -86,7 +160,7 @@
                 <label class="control-label required-field pull-left">Pin Code</label>
 
                 <div class="form-group">
-                    <input type="number" class="form-control"  name="fullName" required/>
+                    <input type="number" class="form-control"  name="storePinCode" ng-model="designerInformation.storePinCode"  required/>
                 </div>
             </div>
         </div>
@@ -97,7 +171,7 @@
             <label class="control-label required-field pull-left">Designer's/Label Name</label>
 
             <div class="form-group">
-                <input type="text" class="form-control"  name="fullName" required/>
+                <input type="text" class="form-control"  name="labelName" ng-model="designerInformation.labelName"  required/>
             </div>
 </div>
         </div>
@@ -107,7 +181,7 @@
             <label class="control-label required-field pull-left">Description about your Label</label>
 
             <div class="form-group">
-                <textarea required  cols="500" rows="3" class="form-control" ng-model="labelDescription"></textarea>
+                <textarea required  cols="500" rows="3" class="form-control" name="labelDescription" ng-model="designerInformation.labelDescription"></textarea>
             </div>
         </div>
 </div>
@@ -130,63 +204,44 @@
             <div class="pull-left"><label>Step 3</label></div>
         </div>
 
-<!--
-        <div class="input-group col-xs-6">
-            <span class="btn btn-sm btn-success fileinput-button" ngf-select ng-model="files"  ngf-multiple="true" ngf-keep="true" >
-                <i class="glyphicon glyphicon-plus"></i>
-               Upload Picture
-            </span>
-
+        <div class="col-lg-8">
+            <label class="radio-inline"  ng-repeat="citizenDetail in citizenDetailsList">
+                <input type="radio" ng-model="designerInformation.citizenDetails" value="{{citizenDetail}}" name="citizenDetail" required/>
+                <span ng-bind="citizenDetail"></span>
+            </label>
         </div>
 
-        <div class="col-lg-8">
-            <label class="control-label required-field pull-left">Design Description</label>
+    <div class="col-lg-8" ng-if="designerInformation.citizenDetails == 'Pan Card'">
 
-            <div class="form-group">
-                <textarea required  cols="500" rows="3" class="form-control" ng-model="designDescription"></textarea>
-            </div>
-        </div>
-
-
-        <div class="col-lg-8">
-            <label class="control-label required-field pull-left">Sizes Available</label>
-
-            <div class="form-group">
-                <textarea required  cols="500" rows="3" class="form-control" ng-model="labelDescription"></textarea>
-            </div>
-        </div>
-
-        <div class="col-lg-8">
-            <label class="control-label required-field pull-left">Color</label>
-
-            <div class="form-group">
-                <input type="text" class="form-control"  name="color" required/>
-            </div>
-        </div>
-
-        <div class="col-lg-8">
-            <label class="control-label required-field pull-left">Price</label>
-
-            <div class="form-group">
-                <input type="number" class="form-control"  name="price" required/>
-            </div>
-        </div>
--->
-
-        <div class="col-lg-8">
             <label class="control-label required-field pull-left">Pan Card Number</label>
 
             <div class="form-group">
-                <input type="number" class="form-control"  name="pancardNumber" required/>
+                <input type="text" class="form-control"  name="panCardNumber" ng-model="designerInformation.panCardNumber"  required/>
             </div>
         </div>
 
+    <div class="col-lg-8" ng-if="designerInformation.citizenDetails == 'Aadhar Card'">
+
+        <label class="control-label required-field pull-left">Aadhar Card Number</label>
+
+        <div class="form-group">
+            <input type="text" class="form-control"  name="aadharCardNumber" ng-model="designerInformation.aadharCardNumber"  required/>
+        </div>
+    </div>
+    <div class="col-lg-8" ng-if="designerInformation.citizenDetails == 'Voter ID'">
+
+        <label class="control-label required-field pull-left">Voter ID Card Number</label>
+
+        <div class="form-group">
+            <input type="text" class="form-control"  name="voterIDNumber" ng-model="designerInformation.voterIDCardNumber"  required/>
+        </div>
+    </div>
 
         <div class="col-lg-4 col-lg-offset-4 pull-right">
             <button type="button" class="btn btn-primary" ng-click="onPrevious('Step3')">
                 Previous
             </button>
-            <button type="button" class="btn btn-primary" ng-click="">
+            <button type="button" class="btn btn-primary" ng-click="submitDesignerRegistration()">
                 Submit
             </button>
             <button type="button" class="btn btn-primary" ng-click="onCancel()">

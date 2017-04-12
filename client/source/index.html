@@ -21,11 +21,15 @@
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
     <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
-
+    <script src="bower_components/image-engine-angular/src/angular-wurfl-image-tailor.js"></script>
+    <script src="bower_components/checklist-model/checklist-model.js"></script>
 
     <script type="application/javascript" src="app.js"></script>
     <script type="application/javascript" src="appRouter.js"></script>
     <script type="application/javascript" src="designerRegistration/DesignerRegistrationController.js"></script>
+    <script type="application/javascript" src="designerLogin/DesignerLoginController.js"></script>
+    <script type="application/javascript" src="cart/CartController.js"></script>
+    <script type="application/javascript" src="upload/UploadProductsController.js"></script>
 
     <link rel="stylesheet" href="styles/custom.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -58,10 +62,13 @@
                             <a href="blog.html">Blog</a>
                         </li>
                         <li>
-                            <a ui-sref="login">Login</a>
+                            <a ui-sref="designerLogin">Designer Login</a>
                         </li>
                         <li class="headerElements">
                             <a ui-sref="designerRegistration">Designer Registration</a>
+                        </li>
+                        <li class="headerElements">
+                            <a ui-sref="cart">Cart</a>
                         </li>
                     </ul>
                 </div>

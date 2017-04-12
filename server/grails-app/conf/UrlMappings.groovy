@@ -8,8 +8,11 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-        "/registration/registerDesigner"(controller: 'registration',action: 'register')
-        "/"(view:"/index")
+        "/registration/registerDesigner"(controller: 'registration',action: 'registerDesigner')
+        "/login/designerLogin"(controller: 'login',action: 'designerLogin')
+        "/products/saveProductInformation"(controller: 'product',action: 'saveProductInformation')
+
+        "/"(view:"/index.html")
         "500"(view:'/error')
 	}
 }

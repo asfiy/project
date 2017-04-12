@@ -10,14 +10,11 @@
     function designerRegistrationController($scope,$http,$state){
         $scope.step1= true;
         $scope.step2= false;
-        $scope.designerRegistration={};
+        $scope.designerInformation={};
+        $scope.citizenDetailsList = ['Aadhar Card','Pan Card','Voter ID'];
         $scope.onStep1Completion = function(designerRegistration){
-            $http({method:'POST',url:'/server/registration/registerDesigner',data:designerRegistration}).then(function (result){
                 $scope.step1 = false;
                 $scope.step2 = true;
-            }).catch(function () {
-                console.log("in error");
-            });
         };
         $scope.onStep2Completion = function(){
             $scope.step2 = false;
@@ -32,10 +29,24 @@
                 $scope.step3= false;
             }
         };
-        console.log($scope.files);
         $scope.onCancel = function(){
             $state.go('home');
 
+        };
+        $scope.citizenDetailData = function(){
+            if($scope.designerInformation.citizenDetails =='Pan Card'){
+                $scope.panCardDetails= true;
+            }
+        };
+
+        $scope.submitDesignerRegistration = function(){
+            $scope.designerInformation;
+            $http({method:'POST',url:'/server/registration/registerDesigner',data:$scope.designerInformation}).then(function (result){
+                    console.log("in controller");
+                $state.go('productUpload');
+            }).catch(function () {
+                console.log("in error");
+            });
         }
     }
 })();
