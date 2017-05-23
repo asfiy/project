@@ -5,11 +5,18 @@
     'use strict';
 
     angular.module('project').controller('UploadProductsController', uploadProductsController);
-    uploadProductsController.$inject = ['$scope', '$http', '$state'];
-    function uploadProductsController($scope,$http,$state){
-        $scope.files=[];
+    uploadProductsController.$inject = ['$scope', '$http', '$state','UploadProducts'];
+    function uploadProductsController($scope,$http,$state,UploadProducts){
+        $scope.files={};
         $scope.sizesList = ['xs','s','m','xl'];
-        $scope.productInformation =[];
+        $scope.productInformation ={};
+        $scope.designerId ={designerId:"asfiya"};
+        $scope.productInformationList =[];
+        $http({method:'POST',url:'/server/products/retrieveProducts',data:$scope.designerId}).then(function (result){
+            $scope.productInformationList = result.data.productInformation;
+            $scope.productImageList = result.data.productImage;
+
+        });
         $scope.validateDocumentRequired = function(){
             if(($scope.files && ( $scope.files.length > 0  || typeof  $scope.files === "object" ))) {
                 $scope.fileModelObj="file";
@@ -19,9 +26,45 @@
         };
 
         $scope.saveProductInformation = function(){
-            $http({method:'POST',url:'/server/products/saveProductInformation',data:$scope.productInformation}).then(function (result) {
-                    console.log('in product');
+            var result = UploadProducts.process($scope.formatData($scope.productInformation,$scope.files)).$promise;
+            result.then(function (result){
+                console.log("in controller");
+                if(result.request){
+                   // $scope.files.add(result.request.productImages);
+                    $state.go('productUpload',{},{reload:true});
+                }
+              //  $state.go('productUpload');
+            }).catch(function () {
+                console.log("in error"+result.errors);
             });
-        }
+        };
+
+
+        $scope.formatData = function(requestObj,fileObj){
+            var objFiles=[];
+            for (var property in fileObj) {
+                var fileNames = [];
+                if(Object.prototype.toString.call(fileObj[property]) === '[object Array]'){
+                    for (var i = 0; i < fileObj[property].length; i++) {
+                        fileNames.push(property+"." + i);
+                    }
+                }else{
+                    fileNames.push(property+"." + 0);
+                }
+                var tempObj={
+                    file : fileObj[property],
+                    fileFormDataName :fileNames
+                };
+                objFiles.push(tempObj);
+            }
+            var data={
+                formfields: {req: requestObj},
+                fileArrayObj: objFiles
+            };
+            return data;
+        };
+
+
     }
 })();
+

@@ -5,21 +5,28 @@
     'use strict';
 
     angular.module('project').controller('DesignerLoginController', designerLoginController);
-    designerLoginController.$inject = ['$scope', '$http', '$state'];
+    designerLoginController.$inject = ['$scope', '$http', '$state','sessionService'];
 
-    function designerLoginController($scope, $http, $state) {
+    function designerLoginController($scope, $http, $state,sessionService) {
         $scope.designerLogin={};
 
         $scope.login = function(){
             if($scope.designerLogin.userName && $scope.designerLogin.password){
                 $http({method:'POST',url:'/server/login/designerLogin',data:$scope.designerLogin}).then(function (result){
                     console.log("in controller");
-                    $state.go('productUpload');
+                    if(result.statusText && result.data.designerInformation.id){
+                        sessionService.set('user',result.data.designerInformation.id);
+                        $state.go('productUpload');
+                    }else{
+                        $state.go('designerLogin');
+                    }
                 }).catch(function () {
                     console.log("in error");
                 });
 
             }
-        }
+        };
+
+
     }
 })();

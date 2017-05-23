@@ -3,8 +3,16 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--<script src="bower_components/jquery/dist/jquery.js"></script>-->
     <script src="bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -12,10 +20,13 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!--<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-ui-select/dist/select.js"></script>
     <script src="bower_components/select2/select2.js"></script>
+<!--
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+-->
     <script src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
     <script src="bower_components/angular-shims-placeholder/dist/angular-shims-placeholder.js"></script>
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
@@ -24,62 +35,171 @@
     <script src="bower_components/image-engine-angular/src/angular-wurfl-image-tailor.js"></script>
     <script src="bower_components/checklist-model/checklist-model.js"></script>
 
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    &lt;!&ndash; Angular Material Library &ndash;&gt;
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+-->
+
+
+    <!-- Angular Material Library -->
     <script type="application/javascript" src="app.js"></script>
     <script type="application/javascript" src="appRouter.js"></script>
     <script type="application/javascript" src="designerRegistration/DesignerRegistrationController.js"></script>
     <script type="application/javascript" src="designerLogin/DesignerLoginController.js"></script>
     <script type="application/javascript" src="cart/CartController.js"></script>
     <script type="application/javascript" src="upload/UploadProductsController.js"></script>
+    <script type="application/javascript" src="upload/UploadProducts.js"></script>
+    <script type="application/javascript" src="designerLogin/LoginService.js"></script>
+    <script type="application/javascript" src="session/sessionService.js"></script>
+    <script type="application/javascript" src="directives/LoggedInDesignerDirective.js"></script>
+    <script type="application/javascript" src="userLogin/UserLoginController.js"></script>
+    <script type="application/javascript" src="userRegistration/UserRegistrationController.js"></script>
+    <script type="application/javascript" src="cart/TrackingController.js"></script>
+    <script type="application/javascript" src="ProductPages/ProductOrderController.js"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Belleza" rel="stylesheet">
     <link rel="stylesheet" href="styles/custom.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
     <link href="styles/font-awesome.css" rel="stylesheet">
     <script src="js/html5shiv.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
+<script>
+    jQuery(document).on('click', '.mega-dropdown', function(e) {
+    e.stopPropagation()
+})
+</script>
 </head>
 
 <body>
-<div class="container-fluid">
 
-    <div class="row">
+<div class="container" style="position: relative;z-index: 9999;top: 0;">
+    <div class="row" style="height: 50px;">
+    <nav class="navbar navbar-default navbar-center-padding">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Cortuaara</a>
+        </div>
 
 
+        <div class="collapse navbar-collapse js-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown mega-dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women <span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
 
-                                <div id="page">
-            <div id="header">
-                <div>
-                    <ul id="navigation">
-                        <li class="selected">
-                            <a href="index.html">Home</a>
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                       <!-- <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">New in Stores</li>
+                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
+                                            <h4><small>Summer dress floral prints</small></h4>
+                                            <button class="btn btn-primary" type="button">49,99 €</button>
+                                            <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
+                                        </div>
+                                        &lt;!&ndash; End Item &ndash;&gt;
+                                        <div class="item">
+                                            <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
+                                            <h4><small>Gold sandals with shiny touch</small></h4>
+                                            <button class="btn btn-primary" type="button">9,99 €</button>
+                                            <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
+                                        </div>
+                                        &lt;!&ndash; End Item &ndash;&gt;
+                                        <div class="item">
+                                            <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
+                                            <h4><small>Denin jacket stamped</small></h4>
+                                            <button class="btn btn-primary" type="button">49,99 €</button>
+                                            <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
+                                        </div>
+                                        &lt;!&ndash; End Item &ndash;&gt;
+                                    </div>
+                                    &lt;!&ndash; End Carousel Inner &ndash;&gt;
+                                </div>
+                                &lt;!&ndash; /.carousel &ndash;&gt;
+                                <li class="divider"></li>
+                                <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                            </ul>
+                        </li>-->
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Indian Wear</li>
+                                <li><a href="#">Ghagras</a></li>
+                                <li><a href="#">Anarkalis</a></li>
+                                <li><a href="#">Skirts</a></li>
+                                <li><a href="#">Sarees</a></li>
+                                <li><a href="#">Dupattas</a></li>
+                            </ul>
                         </li>
-                        <li class="menu">
-                            <a href="about.html">About</a>
-                        </li>
-                        <li class="menu">
-                            <a href="blog.html">Blog</a>
-                        </li>
-                        <li>
-                            <a ui-sref="designerLogin">Designer Login</a>
-                        </li>
-                        <li class="headerElements">
-                            <a ui-sref="designerRegistration">Designer Registration</a>
-                        </li>
-                        <li class="headerElements">
-                            <a ui-sref="cart">Cart</a>
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Western Wear</li>
+                                <li><a href="#">Easy to customize</a></li>
+                                <li><a href="#">Glyphicons</a></li>
+                                <li><a href="#">Pull Right Elements</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Pants</li>
+                                <li><a href="#">Coloured Headers</a></li>
+                                <li><a href="#">Primary Buttons & Default</a></li>
+                                <li><a href="#">Calls to action</a></li>
+                            </ul>
                         </li>
                     </ul>
-                </div>
-                            </div>
+
+                </li>
+
+
+                <li class="dropdown mega-dropdown navbar-right-align" designer-login>
+                    <a ui-sref="designerRegistration">Designer Registration</a>
+                </li>
+                <li class="dropdown mega-dropdown navbar-right-align">
+                    <a ui-sref="cart">Cart</a>
+                </li>
+                <li class="dropdown navbar-right-align" designer-login>
+                    <a  ui-sref="designerLogin">Designer Login</a>
+
+                </li>
+                <li class="dropdown navbar-right-align" designer-login>
+                    <a  ui-sref="userLogin">LogIn</a>
+                </li>
+
+                <li class="dropdown navbar-right-align" designer-login>
+                    <a  ui-sref="userRegistration">SignUp</a>
+
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
         </div>
 </div>
-    </div>
+
+
 <!--Slider-->
 </div>
-<div ui-view></div>
 
+<div ui-view style="margin-top: 50px;"></div>
+
+
+<div class="container" style="bottom: 0;position: relative">
+    <br/>
+    <div class="footerDiv" style="height: 100px;margin-left: -15px;margin-right: -15px;">
+
+    </div>
+</div>
 
 </body>
 </html>

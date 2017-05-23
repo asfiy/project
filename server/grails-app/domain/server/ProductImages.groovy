@@ -2,11 +2,13 @@ package server
 
 class ProductImages {
 
-    Byte[] data
-    String designerId
     String fileName
     String contentType
-
+    String fileUrl
+    static  belongsTo = [ProductInformation]
     static constraints = {
+    }
+    static mapping = {
+        tablePerHierarchy true
     }
 }

@@ -31,8 +31,8 @@
         };
         $scope.onCancel = function(){
             $state.go('home');
-
         };
+
         $scope.citizenDetailData = function(){
             if($scope.designerInformation.citizenDetails =='Pan Card'){
                 $scope.panCardDetails= true;
@@ -40,7 +40,6 @@
         };
 
         $scope.submitDesignerRegistration = function(){
-            $scope.designerInformation;
             $http({method:'POST',url:'/server/registration/registerDesigner',data:$scope.designerInformation}).then(function (result){
                     console.log("in controller");
                 $state.go('productUpload');

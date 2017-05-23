@@ -14,4 +14,14 @@ class RegistrationService {
         }
         return result
     }
+
+    def registerUser(userInformation) {
+        def result=[:]
+        if(userInformation.validate() && userInformation.save(failOnError:true,flush:true)){
+            result = [userInformation:userInformation,success:true]
+        }else{
+            result = [success: false]
+        }
+        return result
+    }
 }

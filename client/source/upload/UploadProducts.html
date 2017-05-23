@@ -4,54 +4,60 @@
 
 
 
-<span class="btn btn-sm btn-success fileinput-button" ngf-select ng-model="productInformation.files" ngf-multiple="true" ngf-keep="true">
+<span class="btn btn-sm btn-success fileinput-button" ngf-select ng-model="files.products" ngf-multiple="true" ngf-keep="true">
             <i class="glyphicon glyphicon-plus"></i>
             upload
         </span>
-<div>
-    <div>
-        <label>Short Description:</label>
-        <input type="text" ng-model="productInformation.shortDescription"/>
-    </div>
-    <div>
-        <label>Description:</label>
-        <input type="text" ng-model="productInformation.description"/>
-    </div>
 
+    <div>
+        <div>
+            <label>Product Code:</label>
+            <input type="text" ng-model="productInformation.productCode"/>
+        </div>
+        <div>
+            <label>Short Description:</label>
+            <input type="text" ng-model="productInformation.shortDescription"/>
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" ng-model="productInformation.description"/>
+        </div>
+
+        <label> Price:</label>
+        <input type="number" ng-model="productInformation.price">
+    </div>
+    <div>
+        <label>Sizes Available:</label>
+        <label ng-repeat="size in sizesList">
+            <input type="checkbox" data-checklist-model="productInformation.sizes" data-checklist-value="size"> {{size}}
+        </label>
+    </div>
+    <div>
+        <label>Delivery Time:</label>
+        <input type="text" ng-model="productInformation.deliveryTime"/>
+    </div>
     <div>
         <label>Fabric:</label>
         <input type="text" ng-model="productInformation.fabric"/>
     </div>
-
-<label> Price:</label>
-<input type="number" ng-model="productPrice">
-</div>
-<div>
-    <label>Sizes Available:</label>
-    <label ng-repeat="size in sizesList">
-        <input type="checkbox" data-checklist-model="productInformation.size" data-checklist-value="size"> {{size}}
-    </label>
+    <div>
+        <label>Care:</label>
+        <input type="text" ng-model="productInformation.care"/>
     </div>
-<div>
-    <label>Delivery Time:</label>
-    <input type="text" ng-model="productInformation.deliveryTime"/>
-</div>
-<div>
-    <label>Fabric:</label>
-    <input type="text" ng-model="productInformation.fabric"/>
-</div>
     <div>
         <button type="button" class="btn btn-primary" ng-click="saveProductInformation()">
             Submit
         </button>
     </div>
-<div data-ng-repeat="file in productInformation.files">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <img ngf-src="file" class="thumb" height="120px" width="120px">
-            </div>
-        </div>
-    </div>
+
 </div>
+
+<div data-ng-repeat="product in productInformationList">
+    <label>{{product.designerId}}</label>
+    <div data-ng-repeat="image in productImageList">
+        <img src="{{image.fileUrl}}" height="120px" width="120px"/>
+
+        <label>{{image.fileName}}</label>
     </div>
+    <label>{{product.designerId}}</label>
+</div>

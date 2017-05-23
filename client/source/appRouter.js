@@ -33,7 +33,8 @@
             .state('cart',{
                 url:'/cart',
                 templateUrl:'cart/Cart.html',
-                controller:'CartController'
+                controller:'CartController',
+                data:{}
             })
             .state('cancelOrder',{
                 url:'/cancel',
@@ -45,6 +46,20 @@
                 templateUrl:'upload/UploadProducts.html',
                 controller:'UploadProductsController'
             })
-
+            .state('userLogin',{
+                url:'/login',
+                templateUrl: 'userLogin/UserLogin.html',
+                controller:'UserLoginController'
+            })
+            .state('userRegistration',{
+                url:'/register',
+                templateUrl: 'userRegistration/UserRegistration.html',
+                controller:'UserRegistrationController'
+            })
+            .state('productPage',{
+                url:'/product',
+                templateUrl: 'ProductPages/ProductPage.html',
+                controller:'ProductOrderController'
+            })
     }
 })();

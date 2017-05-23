@@ -1,8 +1,9 @@
 <div class="orders">
 
     <div class="headerCard" style="background-color: #31c3ee;height:60px;">
-        <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">MY ORDERS</label>
-    </div>
+    <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">MY ORDERS</label>
+</div>
+
     <div ng-repeat="item in cartItems track by $index">
        <div class="row">
            <div class="col-md-4">
@@ -22,8 +23,12 @@
             </div>
            <div class="col-md-4">
         <div style="text-align: right">
-            <div style="margin-top: 70px;margin-right: 40px;"><a href="">Track Order</a></div>
-            <div style="margin-right: 40px;"><a ui-sref="cancelOrder">Cancel Order</a></div>
+            <md-button class="md-primary md-raised" ng-click="showTrackingInformation($event,$index)">
+                TRACK ORDER
+            </md-button>
+            <md-button class="md-primary md-raised" ng-click="cancelOrder($event,$index)">
+                CANCEL ORDER
+            </md-button>
         </div>
            </div>
        </div>

@@ -18,5 +18,12 @@ class RegistrationController {
         respond status:OK
     }
 
+    def registerUser() {
+        UserInformation userInformation = new UserInformation()
+        def information = new JSONObject(request.JSON)
+        bindData(userInformation,information)
+        registrationService.registerUser(userInformation)
+        respond status:OK
+    }
 
 }
