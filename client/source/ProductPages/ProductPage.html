@@ -1,0 +1,40 @@
+<div class="row">
+<div  class="col-xs-6" flex-xs flex-gt-xs="30" layout="column">
+
+    <md-card>
+        <img ng-src="images/image.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Favorite">
+                <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Share">
+                <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>
+    <div style="display: block;" class="col-xs-2">
+    <div ng-repeat="size in sizes">
+        <!--<div class="row" style="display: inline-block;">
+
+        <md-button class="md-primary md-raised" ng-click="buyNow()">
+            {{size}}
+        </md-button>-->
+        <div style="display: inline-block">
+        <button ng-click="getSelectedValue($index)" class="sizeButton" style="border:1px solid #282c3f; border-radius: 5px;background-color:white;">{{size}}</button></div>
+        </div>
+    </div>
+
+    <div class="col-xs-4" style="text-align: right">
+    <md-button class="md-primary md-raised" ng-click="buyNow()">
+        BUY NOW
+    </md-button>
+        <br/>
+        <md-button class="md-primary md-raised" ng-click="addToCart()">
+            ADD TO CART
+        </md-button>
+        </div>
+</div>

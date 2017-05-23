@@ -1,0 +1,42 @@
+
+<br/>
+<div  class="card">
+    <div class="headerCard" style="background-color: #31c3ee;height:60px;">
+        <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">SIGN UP</label>
+    </div>
+
+    <div class="container-fluid animation-fadeIn" align="center">
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Name</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="userRegistration.name"  name="userName" required/>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">User Name/Mobile Number</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="userRegistration.userName"  name="userName" required/>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <label class="control-label required-field pull-left">Password</label>
+
+            <div class="form-group">
+                <input type="password" class="form-control" ng-model="userRegistration.password"  name="password" required/>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-lg-offset-4 pull-right">
+            <button type="button" class="btn btn-primary" ng-click="register()">
+                Register
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="cancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
