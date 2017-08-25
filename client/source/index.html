@@ -60,7 +60,10 @@
     <script type="application/javascript" src="userRegistration/UserRegistrationController.js"></script>
     <script type="application/javascript" src="cart/TrackingController.js"></script>
     <script type="application/javascript" src="ProductPages/ProductOrderController.js"></script>
+    <script type="application/javascript" src="ProductPages/ProductService.js"></script>
+    <script type="application/javascript" src="ProductPages/Product.js"></script>
 
+    <script type="application/javascript" src="category/CategoryService.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Belleza" rel="stylesheet">
     <link rel="stylesheet" href="styles/custom.css">
 
@@ -133,10 +136,14 @@
                                 <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
                             </ul>
                         </li>-->
+                        {{categories}}
                         <li class="col-sm-3">
-                            <ul>
+                            <ul ng-repeat ="category in categories">
+                                <li><a ui-sref="products({category:'{{category.name}}'})">{{category.name}}</a></li>
+                            </ul>
+                        <ul>
                                 <li class="dropdown-header">Indian Wear</li>
-                                <li><a href="#">Ghagras</a></li>
+                                <li><a ui-sref="products({category:'Ghagra'})">Ghagras</a></li>
                                 <li><a href="#">Anarkalis</a></li>
                                 <li><a href="#">Skirts</a></li>
                                 <li><a href="#">Sarees</a></li>

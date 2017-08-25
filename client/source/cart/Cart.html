@@ -1,39 +1,102 @@
-<div class="orders">
+<!--<div class="orders">
 
     <div class="headerCard" style="background-color: #31c3ee;height:60px;">
-    <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">MY ORDERS</label>
-</div>
+        <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">CART</label>
+    </div>-->
 
-    <div ng-repeat="item in cartItems track by $index">
-       <div class="row">
-           <div class="col-md-4">
-              <div style="">
-                  <img src="images/image.png" height="120px" width="120px"/>
-                  </div>
-               </div>
-           <div class="col-md-4">
-               <div style="text-align: left;">
-
-               <div>{{item.name}}</div>
-                <div>{{item.cost}}</div>
-                <div>{{item.cost}}</div>
-                <div>{{item.cost}}</div>
-                <div>{{item.cost}}</div>
+    <!--<div ng-repeat="item in cartItems track by $index">
+        &lt;!&ndash;<div class="row">
+            <div class="col-md-4">
+                <div style="">
+                    <img src="images/image.png" height="120px" width="120px"/>
                 </div>
             </div>
-           <div class="col-md-4">
-        <div style="text-align: right">
-            <md-button class="md-primary md-raised" ng-click="showTrackingInformation($event,$index)">
-                TRACK ORDER
-            </md-button>
-            <md-button class="md-primary md-raised" ng-click="cancelOrder($event,$index)">
-                CANCEL ORDER
-            </md-button>
+            <div class="col-md-4">
+                <div style="text-align: left;">
+
+                    <div>{{item.name}}</div>
+                    <div>{{item.cost}}</div>
+                    <div>{{item.cost}}</div>
+                    <div>{{item.cost}}</div>
+                    <div>{{item.cost}}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>&ndash;&gt;
+
+        <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch style="height:180px;">
+           &lt;!&ndash; <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Card with image</span>
+                    <span class="md-subhead">Extra Large</span>
+                </md-card-title-text>
+            </md-card-title>&ndash;&gt;
+            <md-card-content layout="row" layout-align="space-between">
+                <div class="md-media-xl card-media">
+                    <img src="images/image.png" height="120px" width="120px"/>
+
+                </div>
+
+                <md-card-actions layout="column">
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Share">
+                        <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                    </md-button>
+                </md-card-actions>
+            </md-card-content>
+        </md-card>
+
+
+    </div>-->
+    <md-toolbar layout="column">
+        <div class="md-toolbar-tools">
+            <div class="fill-height" layout="row" flex="flex">
+                <div class="md-toolbar-item md-breadcrumb" ng-hide="toggleSearch"><span ng-click="toggleSearch = !toggleSearch">My Cart</span></div><span flex="flex" ng-hide="toggleSearch"></span>
+                <md-input-container flex="flex" style="padding-left:88px" ng-show="toggleSearch">
+                    <input id="searchinput" type="text" ng-model="search" show-focus="toggleSearch"/>
+                </md-input-container>
+                <div class="md-toolbar-item md-tools" layout="row"><a class="md-button md-default-theme" href="#" ng-click="toggleSearch = !toggleSearch"><i class="ion-android-search"></i></a></div>
+            </div>
         </div>
-           </div>
-       </div>
-        <ul><li class="divider"></li></ul>
-
-
+    </md-toolbar>
+    <md-content layout="column" flex="flex" ng-click="toggleSearch=false">
+        <md-table headers="headers" content="content" sortable="sortable" filters="search" custom-class="custom" thumbs="thumbs" count="count"></md-table>
+    </md-content>
+    </body>
+    </html>
+    <!-- md-table jade template-->
+    <div id="md-table-template" ng-hide="true">
+        <table class="md-table" md-colresize="md-colresize">
+            <thead>
+            <tr class="md-table-headers-row">
+                <th class="md-table-header" ng-repeat="h in headers"><a href="#" ng-if="handleSort(h.field)" ng-click="reverse=!reverse;order(h.field,reverse)">{{h.name}} <i class="ion-android-arrow-dropup" ng-show="reverse &amp;&amp; h.field == predicate"></i><i class="ion-android-arrow-dropdown" ng-show="!reverse &amp;&amp; h.field == predicate"></i></a><span ng-if="!handleSort(h.field)">{{h.name}}</span></th>
+                <th class="md-table-header"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="md-table-content-row" ng-repeat="c in content | filter:filters |  limitTo: count">
+                <td>
+                    <div class="md-table-thumbs" ng-repeat="h in headers" ng-if="h.field == thumbs">
+                        <div style="background-image:url({{c.thumb}})"></div>
+                    </div>
+                </td>
+                <td class="md-table-content" ng-repeat="h in headers" ng-class="customClass[h.field]" ng-if="h.field != thumbs">{{(h.field.indexOf('date') > 0) ? $filter('date')(c[h.field]) : c[h.field];}}</td>
+                <td class="md-table-td-more">
+                    <md-button aria-label="Info"><i class="ion-android-more-vertical"></i></md-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+      <md-button class="md-primary md-hue-2" ng-disabled="tablePage==0" ng-click="tablePage=tablePage-1" aria-label="Previous Page"><i class="ion-chevron-left" style="font-size:16px"></i></md-button><a href="#" ng-repeat="i in getNumber(nbOfPages()) track by $index">
+            <md-button class="md-primary md-hue-2 md-table-footer-item" ng-click="goToPage($index)"><span ng-class="{ 'md-table-active-page': tablePage==$index}">{{$index+1}}</span></md-button></a>
+      <md-button class="md-primary md-hue-2" ng-disabled="tablePage==nbOfPages()-1" ng-click="tablePage=tablePage+1" aria-label="Next Page"><i class="ion-chevron-right" style="font-size:16px"></i></md-button></span></div>
     </div>
-</div>
+<!--
+</div>-->

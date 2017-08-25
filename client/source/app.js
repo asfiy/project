@@ -13,9 +13,11 @@
         });
 
     app.run(appSetup);
-    appSetup.$inject = ['$rootScope', '$location','LoginService', '$state'];
-        function appSetup(root,$location,loginService,state){
-        console.log("path" +$location.path());
+    appSetup.$inject = ['$rootScope', '$location','LoginService', '$state','CategoryService'];
+        function appSetup(root,$location,loginService,state,categoryService){
+            categoryService.setCategories();
+
+            console.log("path" +$location.path());
         var designerRoutesPermission=['/productUpload'];
             var userRoutesPermission=['/cart'];
 

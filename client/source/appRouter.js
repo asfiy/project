@@ -44,6 +44,13 @@
             .state('productUpload',{
                 url:'/UploadProducts',
                 templateUrl:'upload/UploadProducts.html',
+                resolve: {
+                    categories: function(CategoryService){
+                        return CategoryService.getCategories().then(function(response) {
+                            return response;
+                        });
+                    }
+                },
                 controller:'UploadProductsController'
             })
             .state('userLogin',{
@@ -57,9 +64,30 @@
                 controller:'UserRegistrationController'
             })
             .state('productPage',{
-                url:'/product',
+                url:'/product?category',
                 templateUrl: 'ProductPages/ProductPage.html',
                 controller:'ProductOrderController'
+            })
+            .state('products',{
+                url:'/products?category',
+                templateUrl: 'ProductPages/ProductsDisplay.html',
+                resolve: {
+                    productInfoList: function(ProductService,$stateParams){
+                        return ProductService.retrieveProductsBasedOnCategory($stateParams.category).then(function(response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'ProductOrderController'
+            })
+            .state('checkout',{
+                url:'/checkout',
+                templateUrl: 'checkout/DeliveryAddress_Checkout.html',
+                controller:' CheckoutController'
+            })
+            .state('success',{
+                url:'/success',
+                templateUrl: 'defaultPages/OrderSuccess.html'
             })
     }
 })();

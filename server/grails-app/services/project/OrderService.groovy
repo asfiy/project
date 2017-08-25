@@ -1,8 +1,8 @@
 package project
 
 import grails.transaction.Transactional
-import server.Cart
-import server.OrderInformation
+import com.domain.project.Cart
+import com.domain.project.OrderInformation
 
 @Transactional
 class OrderService {

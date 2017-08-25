@@ -1,7 +1,7 @@
 package project
 
 import grails.transaction.Transactional
-import server.ProductInformation
+import com.domain.project.ProductInformation
 
 @Transactional
 class ProductService {

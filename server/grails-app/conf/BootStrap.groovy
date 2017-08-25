@@ -1,5 +1,5 @@
 import grails.converters.JSON
-import server.ProductImages
+import com.domain.project.ProductImages
 
 class BootStrap {
 

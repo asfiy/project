@@ -1,5 +1,29 @@
-<div>
+<div class="row" ng-if="">
+</div>
+
+
+<div class="row">
     <label>Delivery Address</label>
-
-
+<div>
+    <label>Address</label>
+    <textarea cols="20" rows="20" ng-model ="deliveryAddress.address"></textarea>
+</div>
+    <div>
+        <label>City</label>
+        <input type="text" ng-model="deliveryAddress.city"></textarea>
+    </div>
+    <div>
+        <label>Country</label>
+        <select class="form-control"
+                ng-model="deliveryAddress.country"
+                ng-options="opt as opt.countryName for opt in countries"
+                required
+                name="eventCountry">
+            <option value=""></option>
+        </select>
+    </div>
+    <div>
+        <label>PinCode</label>
+        <input type="number" ng-model ="deliveryAddress.pinCode"></textarea>
+    </div>
 </div>

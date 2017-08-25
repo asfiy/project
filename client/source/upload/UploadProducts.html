@@ -1,13 +1,5 @@
 <h1>Upload Page</h1>
-<div align="center">
-    <label>Please upload your products here and provide the information</label>
-
-
-
-<span class="btn btn-sm btn-success fileinput-button" ngf-select ng-model="files.products" ngf-multiple="true" ngf-keep="true">
-            <i class="glyphicon glyphicon-plus"></i>
-            upload
-        </span>
+<div align="left">
 
     <div>
         <div>
@@ -45,6 +37,26 @@
         <input type="text" ng-model="productInformation.care"/>
     </div>
     <div>
+        <label>Category:</label>
+    <md-input-container style="margin-right: 30px;">
+        <label>Please select a Category:</label>
+        <md-select ng-model="productInformation.category">
+            <md-option ng-repeat="category in categoryList" value="{{category.categoryName}}">{{category.categoryName}}</md-option>
+        </md-select>
+    </md-input-container>
+        </div>
+
+
+    <label>Please upload your products here and provide the information</label>
+    <span class="btn btn-sm btn-success fileinput-button" ngf-select ng-model="files.products" ngf-multiple="true" ngf-keep="true">
+        <i class="glyphicon glyphicon-plus"></i>
+        upload
+    </span>
+
+    <div ng-repeat ="file in files.products">
+        <label>{{file.name}}</label>
+    </div>
+    <div>
         <button type="button" class="btn btn-primary" ng-click="saveProductInformation()">
             Submit
         </button>
@@ -52,12 +64,3 @@
 
 </div>
 
-<div data-ng-repeat="product in productInformationList">
-    <label>{{product.designerId}}</label>
-    <div data-ng-repeat="image in productImageList">
-        <img src="{{image.fileUrl}}" height="120px" width="120px"/>
-
-        <label>{{image.fileName}}</label>
-    </div>
-    <label>{{product.designerId}}</label>
-</div>

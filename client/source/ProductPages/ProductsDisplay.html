@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+<!--
+    <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="30" layout="column">
+    <div ng-repeat="product in products">
+        <md-card>
+            <img ng-src="images/image.jpg" class="md-card-image" alt="Washed Out">
+            <md-card-actions layout="row" layout-align="center">
+                <label>{{product.productInformation.price}}</label>
+            </md-card-actions>
+        </md-card>
+    </div>
+    </div>
+</md-content>
+-->
+
+
+
+    <div flex-xs layout="column">
+        <div  ng-repeat="product in matrix">
+            <div class="col-xs-3" ng-repeat="item in product">
+            <md-card>
+                <div class="col-xs-3" ng-repeat="image in item.productImages">
+                    <label>Imageurl</label>
+                    <div ng-init="myVar = {{image.fileUrl}}">
+                    <img ng-src="{{myVar}}" class="md-card-image" alt="Washed Out">
+                    </div>
+                </div>
+                <md-card-actions layout="row" layout-align="start center">
+                    <md-button>Add to Cart</md-button>
+                    <md-button>{{item.price}}</md-button>
+
+                    <md-button>Buy Now</md-button>
+                </md-card-actions>
+
+            </md-card>
+        </div>
+    </div>
+</div>
+</div>
