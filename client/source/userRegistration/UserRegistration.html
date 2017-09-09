@@ -1,5 +1,6 @@
 
 <br/>
+<form name="userRegistrationForm">
 <div  class="card">
     <div class="headerCard" style="background-color: #31c3ee;height:60px;">
         <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">SIGN UP</label>
@@ -11,6 +12,7 @@
 
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="userRegistration.name"  name="userName" required/>
+                <span class="pull-left" style="color:red" ng-show="userRegistrationForm.userName.$touched && userRegistrationForm.userName.$invalid">Name is required</span>
             </div>
         </div>
 
@@ -19,6 +21,7 @@
 
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="userRegistration.userName"  name="userName" required/>
+                <span class="pull-left" style="color:red" ng-show="userRegistrationForm.userName.$touched && userRegistrationForm.userName.$invalid">User Name/Mobile Number is required</span>
             </div>
         </div>
 
@@ -27,6 +30,7 @@
 
             <div class="form-group">
                 <input type="password" class="form-control" ng-model="userRegistration.password"  name="password" required/>
+                <span class="pull-left" style="color:red" ng-show="userRegistrationForm.password.$touched && userRegistrationForm.password.$invalid">Password is required</span>
             </div>
         </div>
 
@@ -40,3 +44,4 @@
         </div>
     </div>
 </div>
+</form>

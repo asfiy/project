@@ -1,6 +1,6 @@
 <br/>
 
-
+<form name="designerregistrationForm">
 <div  class="card">
     <div class="headerCard" style="background-color: #31c3ee;height:60px;">
         <label style="font-family: 'Lato', sans-serif;font-size: 20px;color: #ffffff;height: 90px;line-height: 65px;">DESIGNER REGISTRATION</label>
@@ -15,10 +15,12 @@
         <label class="pull-left">Please provide your personal Information</label>
             </div>
     <div class="col-lg-8">
-    <label class="control-label required-field pull-left">Full Name</label>
+    <label class="control-label required-field pull-left required-field">Full Name</label>
 
     <div class="form-group">
         <input type="text" class="form-control" ng-model="designerInformation.fullName"  name="fullName" required/>
+        <span class="pull-left" style="color:red" ng-show="designerregistrationForm.fullName.$touched && designerregistrationForm.fullName.$invalid">FullName is required</span>
+
     </div>
 </div>
         <div class="col-lg-8">
@@ -26,6 +28,8 @@
 
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="designerInformation.userName"  name="userName" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.userName.$touched && designerregistrationForm.userName.$invalid">UserName is required</span>
+
             </div>
         </div>
         <div class="col-lg-8">
@@ -33,6 +37,7 @@
 
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="designerInformation.password"  name="password" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.password.$touched && designerregistrationForm.password.$invalid">Password is required</span>
             </div>
         </div>
     <div class="col-lg-8">
@@ -40,6 +45,7 @@
 
     <div class="form-group">
         <input type="number" class="form-control" ng-model="designerInformation.mobileNumber"  name="mobileNumber" required/>
+        <span class="pull-left" style="color:red" ng-show="designerregistrationForm.mobileNumber.$touched && designerregistrationForm.mobileNumber.$invalid">MobileNumber is required</span>
     </div>
 </div>
     <div class="col-lg-8">
@@ -47,6 +53,7 @@
 
         <div class="form-group">
             <input type="text" class="form-control" ng-model="designerInformation.emailAddress"  name="emailAddress" required/>
+            <span  class="pull-left" style="color:red" ng-show="designerregistrationForm.emailAddress.$touched && designerregistrationForm.emailAddress.$invalid">EmailAddress is required</span>
         </div>
     </div>
 
@@ -55,6 +62,7 @@
 
             <div class="form-group">
                 <textarea required cols="500" rows="3" class="form-control" ng-model="designerInformation.address"></textarea>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.emailAddress.$touched && designerregistrationForm.emailAddress.$invalid">EmailAddress is required</span>
             </div>
         </div>
 
@@ -63,7 +71,8 @@
             <label class="control-label required-field pull-left">City</label>
 
             <div class="form-group">
-                <input type="text" class="form-control"  name="fullName" ng-model="designerInformation.city" required/>
+                <input type="text" class="form-control"  name="city" ng-model="designerInformation.city" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.city.$touched && designerregistrationForm.city.$invalid">City is required</span>
             </div>
         </div>
 
@@ -72,6 +81,7 @@
 
             <div class="form-group">
                 <input type="text" class="form-control"  name="state" ng-model="designerInformation.state" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.state.$touched && designerregistrationForm.state.$invalid">State is required</span>
             </div>
         </div>
 
@@ -79,7 +89,8 @@
             <label class="control-label required-field pull-left">Country</label>
 
             <div class="form-group">
-                <input type="text" class="form-control"  name="fullName" ng-model="designerInformation.country" required/>
+                <input type="text" class="form-control"  name="country" ng-model="designerInformation.country" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.country.$touched && designerregistrationForm.country.$invalid">Country is required</span>
             </div>
         </div>
 
@@ -87,20 +98,26 @@
             <label class="control-label required-field pull-left">Pin Code</label>
 
             <div class="form-group">
-                <input type="number" class="form-control"  name="fullName" ng-model="designerInformation.pinCode" required/>
+                <input type="number" class="form-control"  name="pincode" ng-model="designerInformation.pinCode" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.pincode.$touched && designerregistrationForm.pincode.$invalid">Pin Code is required</span>
             </div>
         </div>
 
 
     <div class="col-lg-4 col-lg-offset-4 pull-right">
-<button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)">
+        <button type="button" class="btn btn-primary" ng-click="onCancel()">
+            Cancel
+        </button>
+<button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)" ng-disabled="designerregistrationForm.$invalid">
     Next
+
+
+
 </button>
-            <button type="button" class="btn btn-primary" ng-click="onCancel()">
-                Cancel
-            </button>
+
     </div>
     </div>
+
 
 
 <div class="container-fluid" align="center" ng-if="step2">
@@ -119,6 +136,7 @@
 
             <div class="form-group">
                 <input type="number" class="form-control"  name="storeContactNumber" ng-model="designerInformation.storeContactNumber" required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.storeContactNumber.$touched && designerregistrationForm.storeContactNumber.$invalid">Store Contact Number is required</span>
             </div>
         </div>
     </div>
@@ -129,7 +147,8 @@
             <label class="control-label required-field pull-left">Address</label>
 
             <div class="form-group">
-                <textarea required cols="500" rows="3" class="form-control" ng-model="designerInformation.storeAddress"></textarea>
+                <textarea required cols="500" rows="3" name="address" class="form-control" ng-model="designerInformation.storeAddress"></textarea>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.address.$touched && designerregistrationForm.address.$invalid">Address is required</span>
             </div>
         </div>
 </div>
@@ -140,6 +159,7 @@
 
                 <div class="form-group">
                     <input type="text" class="form-control"  name="storeCity" ng-model="designerInformation.storeCity" required/>
+                    <span class="pull-left" style="color:red" ng-show="designerregistrationForm.storeCity.$touched && designerregistrationForm.storeCity.$invalid">StoreCity is required</span>
                 </div>
             </div>
         </div>
@@ -150,6 +170,7 @@
 
                 <div class="form-group">
                     <input type="text" class="form-control"  name="storeCountry" ng-model="designerInformation.storeCountry" required/>
+                    <span  class="pull-left" style="color:red" ng-show="designerregistrationForm.storeCountry.$touched && designerregistrationForm.storeCountry.$invalid">StoreCountry is required</span>
                 </div>
             </div>
         </div>
@@ -161,6 +182,7 @@
 
                 <div class="form-group">
                     <input type="number" class="form-control"  name="storePinCode" ng-model="designerInformation.storePinCode"  required/>
+                    <span class="pull-left" style="color:red" ng-show="designerregistrationForm.storePinCode.$touched && designerregistrationForm.storePinCode.$invalid">StorePinCode is required</span>
                 </div>
             </div>
         </div>
@@ -172,6 +194,7 @@
 
             <div class="form-group">
                 <input type="text" class="form-control"  name="labelName" ng-model="designerInformation.labelName"  required/>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.labelName.$touched && designerregistrationForm.labelName.$invalid">Designer's/Label Name is required</span>
             </div>
 </div>
         </div>
@@ -182,6 +205,7 @@
 
             <div class="form-group">
                 <textarea required  cols="500" rows="3" class="form-control" name="labelDescription" ng-model="designerInformation.labelDescription"></textarea>
+                <span class="pull-left" style="color:red" ng-show="designerregistrationForm.labelDescription.$touched && designerregistrationForm.labelDescription.$invalid">Description about your Label is required</span>
             </div>
         </div>
 </div>
@@ -190,7 +214,7 @@
         <button type="button" class="btn btn-primary" ng-click="onPrevious('Step2')">
             Previous
         </button>
-            <button type="button" class="btn btn-primary" ng-click="onStep2Completion('Step2')">
+            <button type="button" class="btn btn-primary" ng-disabled="designerregistrationForm.$invalid" ng-click="onStep2Completion('Step2')">
                 Next
             </button>
         <button type="button" class="btn btn-primary" ng-click="onCancel()">
@@ -207,7 +231,9 @@
         <div class="col-lg-8">
             <label class="radio-inline"  ng-repeat="citizenDetail in citizenDetailsList">
                 <input type="radio" ng-model="designerInformation.citizenDetails" value="{{citizenDetail}}" name="citizenDetail" required/>
-                <span ng-bind="citizenDetail"></span>
+
+
+
             </label>
         </div>
 
@@ -217,6 +243,7 @@
 
             <div class="form-group">
                 <input type="text" class="form-control"  name="panCardNumber" ng-model="designerInformation.panCardNumber"  required/>
+
             </div>
         </div>
 
@@ -235,13 +262,12 @@
         <div class="form-group">
             <input type="text" class="form-control"  name="voterIDNumber" ng-model="designerInformation.voterIDCardNumber"  required/>
         </div>
-    </div>
 
         <div class="col-lg-4 col-lg-offset-4 pull-right">
             <button type="button" class="btn btn-primary" ng-click="onPrevious('Step3')">
                 Previous
             </button>
-            <button type="button" class="btn btn-primary" ng-click="submitDesignerRegistration()">
+            <button type="button" class="btn btn-primary" ng-disabled="designerregistrationForm.$invalid" ng-click="submitDesignerRegistration()">
                 Submit
             </button>
             <button type="button" class="btn btn-primary" ng-click="onCancel()">
@@ -251,3 +277,4 @@
     </div>
 
 </div>
+</form>
