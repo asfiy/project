@@ -76,4 +76,9 @@ class ProductController {
         render productInformationList as JSON
     }
 
+    def getProductById(){
+        ProductInformation selectedProduct = ProductInformation.findById(params.productId)
+        render selectedProduct as JSON
+    }
+
 }

@@ -26,7 +26,7 @@ class ProductInformation {
     }
 
     static mapping = {
-        productImages(column: 'designer_id', joinTable: false, cascade: 'all-delete-orphan')
+        productImages(column: 'product_information_id', joinTable: false, cascade: 'all-delete-orphan')
         tablePerSubclass true
     }
 }

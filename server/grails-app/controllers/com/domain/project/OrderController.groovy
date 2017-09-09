@@ -3,6 +3,8 @@ package com.domain.project
 import org.codehaus.groovy.grails.web.json.JSONObject
 
 class OrderController {
+    static responseFormats = ['json']
+
     def orderService
     def index() {}
 
@@ -17,7 +19,7 @@ class OrderController {
         orderInformation.sizeSelected =req.sizeSelected
         orderInformation.orderStatus = OrderStatus.findByStatus(OrderStatus.NEW)
 
-        render orderService.productOrder(orderInformation)
+        respond orderService.productOrder(orderInformation)
     }
 
     def addToCart(){
@@ -29,9 +31,7 @@ class OrderController {
         cart.user = userInformation
         cart.productInformation = productInformation
         cart.sizeSelected =req.sizeSelected
-        cart.orderStatus = OrderStatus.findByStatus(OrderStatus.CART)
 
-        render orderService.addToCart(cart)
-
+        respond orderService.addToCart(cart)
     }
 }

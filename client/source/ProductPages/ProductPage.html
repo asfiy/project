@@ -1,40 +1,67 @@
 <div class="row">
-<div  class="col-xs-6" flex-xs flex-gt-xs="30" layout="column">
+  <div class="col-lg-6">
+    <div class="row" style="width:70%">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" ng-repeat="img in selectedProduct.productImages" ng-class="{active: !$index}" data-slide-to="{{img.fileUrl}}"></li>
+            </ol>
+<!--
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+-->
 
-    <md-card>
-        <img ng-src="images/image.jpg" class="md-card-image" alt="Washed Out">
-        <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="Favorite">
-                <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Share">
-                <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-            </md-button>
-        </md-card-actions>
-    </md-card>
-</div>
-    <div style="display: block;" class="col-xs-2">
-    <div ng-repeat="size in sizes">
-        <!--<div class="row" style="display: inline-block;">
+            <div class="carousel-inner">
+                <div class="item" ng-class="{active:!$index}" ng-repeat="img in selectedProduct.productImages">
+                    <img ng-src="{{img.fileUrl}}">
+                </div>
+                </div>
 
-        <md-button class="md-primary md-raised" ng-click="buyNow()">
-            {{size}}
-        </md-button>-->
-        <div style="display: inline-block">
-        <button ng-click="getSelectedValue($index)" class="sizeButton" style="border:1px solid #282c3f; border-radius: 5px;background-color:white;">{{size}}</button></div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"
+                                                                             href="#carousel-example-generic"
+                                                                             data-slide="next"><span
+                class="glyphicon glyphicon-chevron-right">
+                    </span>
+        </a>
         </div>
     </div>
-
-    <div class="col-xs-4" style="text-align: right">
-    <md-button class="md-primary md-raised" ng-click="buyNow()">
-        BUY NOW
-    </md-button>
-        <br/>
-        <md-button class="md-primary md-raised" ng-click="addToCart()">
+</div>
+<div class="col-lg-4">
+    <div>
+        <h2>{{selectedProduct.description}}</h2>
+    </div>
+    <div>
+        <h3>{{selectedProduct.shortDescription}}</h3>
+    </div>
+    <div>
+        <h2>Rs. {{selectedProduct.price}}</h2>
+    </div>
+    <div>
+        <label>SELECT SIZE</label><br/>
+    <span ng-repeat="size in sizes" style="height:50px;">
+          <button ng-click="getSelectedValue($index); selected='selectd'" ng-class="{'activeButton':sizeSelected === 'selectd'}" style="border:1px solid #E84A5F; border-radius: 22px;background-color:white;">{{size}}</button>
+    </span>
+    </div>
+    <br/>
+    <div style="text-align: center">
+        <div class="row">
+           <!-- <div class="col-md-4">
+        <button class="btn btn-default" ng-click="buyNow()" style="background-color: peachpuff">
+            BUY NOW
+            </button>
+            </div>-->
+            <div class="col-md-4">
+        <button class="btn btn-default" ng-click="addToCart()" style="background-color: peachpuff"  ng-if="!productAddedToCart">
             ADD TO CART
-        </md-button>
+        </button>
+                <button class="btn btn-default" ng-click="" style="background-color: peachpuff" ng-if="productAddedToCart">
+                    GO TO CART
+                </button>
         </div>
+        </div>
+    </div>
+    </div>
 </div>

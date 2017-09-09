@@ -14,6 +14,10 @@
                 method: 'GET',
                 url: '/server/products/retrieveProductsBasedOnCategory',
                 isArray: true
+            },
+            getProductById: {
+                method: 'GET',
+                url: '/server/products/getProductById'
             }
         });
     }

@@ -15,6 +15,14 @@ hibernate {
 
 // environment specific settings
 environments {
+    local-dev{
+        dataSource {
+            dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url="jdbc:mysql://127.0.0.1:3306/project?useUnicode=yes&characterEncoding=UTF-8"
+            username="root"
+            password=""
+        }
+    }
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''

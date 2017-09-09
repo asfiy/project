@@ -13,6 +13,7 @@ class UrlMappings {
         "/products/saveProductInformation"(controller: 'product',action: 'saveProductInformation')
         "/products/retrieveProducts"(controller: 'product',action: 'retrieveProducts')
         "/products/retrieveProductsBasedOnCategory"(controller: 'product',action: 'retrieveProductsBasedOnCategory')
+        "/products/getProductById"(controller: 'product',action: 'getProductById')
 
         "/registration/registerUser"(controller: 'registration',action: 'registerUser')
         "/login/userLogin"(controller: 'login',action: 'userLogin')

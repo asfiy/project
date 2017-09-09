@@ -64,8 +64,15 @@
                 controller:'UserRegistrationController'
             })
             .state('productPage',{
-                url:'/product?category',
+                url:'/product?productId',
                 templateUrl: 'ProductPages/ProductPage.html',
+                resolve: {
+                    selectedProduct: function(ProductService,$stateParams){
+                        return ProductService.getProductById($stateParams.productId).then(function(response) {
+                            return response;
+                        });
+                    }
+                },
                 controller:'ProductOrderController'
             })
             .state('products',{
@@ -78,7 +85,7 @@
                         });
                     }
                 },
-                controller:'ProductOrderController'
+                controller:'ProductDisplayController'
             })
             .state('checkout',{
                 url:'/checkout',

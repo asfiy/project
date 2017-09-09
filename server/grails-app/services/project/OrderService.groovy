@@ -7,6 +7,8 @@ import com.domain.project.OrderInformation
 @Transactional
 class OrderService {
 
+    def messageSource
+
     def productOrder(OrderInformation orderInformation) {
         def result=[:]
         if(orderInformation.validate() && orderInformation.save(failOnError:true,flush:true)){
@@ -22,7 +24,9 @@ class OrderService {
         if(cart.validate() && cart.save(failOnError:true,flush:true)){
             result = [cart:cart,success:true]
         }else{
-            result = [success: false]
+            result = [errors: cart.errors.allErrors.collect {
+                messageSource.getMessage(it, null)
+            }, success      : false]
         }
         return result
     }

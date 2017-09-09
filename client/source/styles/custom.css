@@ -894,3 +894,9 @@ md-input-container.md-default-theme .md-input {
     border-color: white;
     margin-top: 24px;
 }
+
+
+<!--Product page slide show-->
+.activeButton {
+     color:red;
+}

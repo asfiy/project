@@ -22,18 +22,16 @@
             <div class="col-xs-3" ng-repeat="item in product">
             <md-card>
                 <div class="col-xs-3" ng-repeat="image in item.productImages">
-                    <label>Imageurl</label>
-                    <div ng-init="myVar = {{image.fileUrl}}">
-                    <img ng-src="{{myVar}}" class="md-card-image" alt="Washed Out">
+                    <div>
+                        <a ui-sref="productPage({productId:'{{item.id}}'})"><img src="{{image.fileUrl}}" height="450px;" width="330px;"  alt="Washed Out"></a>
                     </div>
                 </div>
-                <md-card-actions layout="row" layout-align="start center">
-                    <md-button>Add to Cart</md-button>
-                    <md-button>{{item.price}}</md-button>
-
-                    <md-button>Buy Now</md-button>
+                <md-card-actions layout="row" layout-align="center">
+                    <label>{{item.description}}</label>
                 </md-card-actions>
-
+                <md-card-actions layout="row" layout-align="center">
+                    <label>{{item.price}}</label>
+                </md-card-actions>
             </md-card>
         </div>
     </div>

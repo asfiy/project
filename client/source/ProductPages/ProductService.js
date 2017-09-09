@@ -14,6 +14,10 @@
                     return result.data;
                 });*/
                 return Product.retrieveProductsBasedOnCategory({category:category}).$promise;
+            },
+            getProductById: function(productId){
+                return Product.getProductById({productId:productId}).$promise;
+
             }
         };
 

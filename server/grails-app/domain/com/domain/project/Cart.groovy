@@ -8,8 +8,6 @@ class Cart {
 
     User user
 
-    OrderStatus orderStatus
-
     ProductInformation productInformation
     String sizeSelected
 
