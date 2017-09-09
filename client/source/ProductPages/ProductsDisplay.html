@@ -19,21 +19,23 @@
 
     <div flex-xs layout="column">
         <div  ng-repeat="product in matrix">
-            <div class="col-xs-3" ng-repeat="item in product">
+            <div class="col-xs-3" ng-repeat="item in product" style="width: 280px;">
             <md-card>
                 <div class="col-xs-3" ng-repeat="image in item.productImages">
-                    <div>
-                        <a ui-sref="productPage({productId:'{{item.id}}'})"><img src="{{image.fileUrl}}" height="450px;" width="330px;"  alt="Washed Out"></a>
+                    <div ng-if="image.intialImage">
+                        <a ui-sref="productPage({productId:'{{item.id}}'})"><img src="{{image.fileUrl}}" height="250px;" width="200px;"  alt="Washed Out"></a>
                     </div>
                 </div>
                 <md-card-actions layout="row" layout-align="center">
                     <label>{{item.description}}</label>
                 </md-card-actions>
                 <md-card-actions layout="row" layout-align="center">
-                    <label>{{item.price}}</label>
+                    <label>Rs {{item.price}}</label>
                 </md-card-actions>
             </md-card>
-        </div>
+
+
+            </div>
     </div>
 </div>
 </div>

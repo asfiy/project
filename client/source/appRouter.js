@@ -87,6 +87,18 @@
                 },
                 controller:'ProductDisplayController'
             })
+            .state('designerHomePage',{
+                url:'/designerHomePage?designerId',
+                templateUrl: 'DesignerImagesDisplay/DesignerDisplay.html',
+                resolve: {
+                    productInfoList: function(ProductService,$stateParams){
+                        return ProductService.retrieveProductsBasedOnDesigner($stateParams.designerId).then(function(response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'DesignerDisplayController'
+            })
             .state('checkout',{
                 url:'/checkout',
                 templateUrl: 'checkout/DeliveryAddress_Checkout.html',

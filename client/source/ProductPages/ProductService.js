@@ -15,6 +15,12 @@
                 });*/
                 return Product.retrieveProductsBasedOnCategory({category:category}).$promise;
             },
+            retrieveProductsBasedOnDesigner: function(designerId){
+                /*var productInfoList =  $http({method:'POST',url:'/server/products/retrieveProductsBasedOnCategory',category:category}).then(function (result) {
+                 return result.data;
+                 });*/
+                return Product.retrieveProductsBasedOnDesigner({designerId:designerId}).$promise;
+            },
             getProductById: function(productId){
                 return Product.getProductById({productId:productId}).$promise;
 

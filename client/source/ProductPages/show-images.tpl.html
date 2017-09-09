@@ -1,0 +1,26 @@
+<md-dialog style="height: 700px;width: 1400px;">
+    <br/>
+    <div class="row" align="center">
+        <div class="col-lg-4">
+            <label>{{productInfo.description}}</label>
+            <div ng-repeat="image in productInfo.productImages">
+                <div>
+                    <img ng-src="{{image.fileUrl}}" height="100px;" width="100px;" ng-click="changeImage($index)">
+                </div>
+                <br/>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div ng-repeat="image in productInfo.productImages">
+                <div ng-if="image.active">
+                    <img ng-src="{{image.fileUrl}}" height="500px;" width="500px;">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2" align="right">
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </div>
+</md-dialog>

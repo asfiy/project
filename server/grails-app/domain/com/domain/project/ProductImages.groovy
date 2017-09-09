@@ -5,7 +5,7 @@ class ProductImages {
     String fileName
     String contentType
     String fileUrl
-
+    Boolean intialImage
     static  belongsTo = [ProductInformation]
     static constraints = {
     }

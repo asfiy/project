@@ -5,8 +5,8 @@
     'use strict';
 
     angular.module('project').controller('ProductOrderController', productOrderController);
-    productOrderController.$inject = ['$scope', '$http', '$state', 'sessionService','$stateParams','selectedProduct'];
-    function productOrderController($scope, $http, $state,sessionService,$stateParams,selectedProduct) {
+    productOrderController.$inject = ['$scope', '$http', '$state', 'sessionService','$stateParams','selectedProduct','$mdDialog'];
+    function productOrderController($scope, $http, $state,sessionService,$stateParams,selectedProduct,$mdDialog) {
         $scope.sizes =['XS','S','M','L','XL','XXL'];
         $scope.size={};
         $scope.customStyle ={};
@@ -33,7 +33,7 @@
         $scope.addToCart = function(){
 
             var config = {
-                productId:1,
+                productId:$scope.selectedProduct.id,
                 login  :'asfi',
                 sizeSelected :$scope.size
             };
@@ -46,7 +46,22 @@
             });
         };
 
-
+        $scope.showImages = function(ev,$index) {
+            $scope.selectedProduct.productImages[$index].active=true;
+            $mdDialog.show({
+                locals: { productInfo: $scope.selectedProduct },
+                controller: 'ImageController',
+                templateUrl: '/ProductPages/show-images.tpl.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+        };
         $scope.getSelectedValue = function(index){
             $scope.size = $scope.sizes[index];
             $scope.sizeSelected = index;

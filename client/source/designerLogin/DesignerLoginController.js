@@ -16,7 +16,7 @@
                     console.log("in controller");
                     if(result.statusText && result.data.designerInformation.id){
                         sessionService.set('user',result.data.designerInformation.id);
-                        $state.go('productUpload');
+                        $state.go('designerHomePage',{designerId:result.data.designerInformation.id});
                     }else{
                         $state.go('designerLogin');
                     }

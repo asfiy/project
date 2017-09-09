@@ -1,12 +1,15 @@
 /**
+ * Created by ashaik on 9/9/2017.
+ */
+/**
  * Created by ashaik on 5/17/2017.
  */
 (function () {
     'use strict';
 
-    angular.module('project').controller('ProductDisplayController', productDisplayController);
-    productDisplayController.$inject = ['$scope', '$http','$stateParams','productInfoList','$mdDialog'];
-    function productDisplayController($scope, $http,$stateParams,productInfoList,$mdDialog) {
+    angular.module('project').controller('DesignerDisplayController', designerDisplayController);
+    designerDisplayController.$inject = ['$scope', '$http','$stateParams','productInfoList','$mdDialog'];
+    function designerDisplayController($scope, $http,$stateParams,productInfoList,$mdDialog) {
 
         var category = $stateParams.category;
         if (productInfoList.length > 0) {
@@ -22,7 +25,13 @@
             }
         }
 
+        $scope.removeProduct = function(){
+            console.log("in remove");
 
+        };
 
+        $scope.updateInformation = function(){
+            console.log("in update");
+        }
     }
 })();

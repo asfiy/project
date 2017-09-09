@@ -1,67 +1,109 @@
 <div class="row">
-  <div class="col-lg-6">
-    <div class="row" style="width:70%">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" ng-repeat="img in selectedProduct.productImages" ng-class="{active: !$index}" data-slide-to="{{img.fileUrl}}"></li>
-            </ol>
-<!--
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
--->
-
-            <div class="carousel-inner">
-                <div class="item" ng-class="{active:!$index}" ng-repeat="img in selectedProduct.productImages">
-                    <img ng-src="{{img.fileUrl}}">
+    <div class="col-lg-8">
+        <div class="row" style="width:100%">
+         <br/>
+           <div class="col-lg-2" align="right">
+            <div ng-repeat="image in selectedProduct.productImages">
+                <div class="row">
+                    <img ng-src="{{image.fileUrl}}" height="70px;" width="70px;" ng-click="changeImage($index)">
                 </div>
+                <br/>
+            </div>
+           </div>
+            <div class="col-lg-6">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" ng-repeat="img in selectedProduct.productImages"
+                        ng-class="{active: !$index}" data-slide-to="{{img.fileUrl}}"></li>
+                </ol>
+                <!--
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                -->
+
+                <div class="carousel-inner">
+                    <div class="item" ng-class="{active:!$index}" ng-repeat="img in selectedProduct.productImages">
+                        <img ng-src="{{img.fileUrl}}" ng-click="showImages($event,$index)">
+                    </div>
                 </div>
 
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"
-                                                                             href="#carousel-example-generic"
-                                                                             data-slide="next"><span
-                class="glyphicon glyphicon-chevron-right">
-                    </span>
-        </a>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+            </div>
         </div>
+
+
     </div>
-</div>
-<div class="col-lg-4">
-    <div>
-        <h2>{{selectedProduct.description}}</h2>
-    </div>
-    <div>
-        <h3>{{selectedProduct.shortDescription}}</h3>
-    </div>
-    <div>
-        <h2>Rs. {{selectedProduct.price}}</h2>
-    </div>
-    <div>
-        <label>SELECT SIZE</label><br/>
-    <span ng-repeat="size in sizes" style="height:50px;">
-          <button ng-click="getSelectedValue($index); selected='selectd'" ng-class="{'activeButton':sizeSelected === 'selectd'}" style="border:1px solid #E84A5F; border-radius: 22px;background-color:white;">{{size}}</button>
-    </span>
-    </div>
-    <br/>
-    <div style="text-align: center">
+    <div class="col-lg-4" align="left">
+        <div>
+            <h2>{{selectedProduct.description}}</h2>
+        </div>
+        <div>
+            <h2 style="font-family: Times New Roman; font-size: 20px;">Rs. {{selectedProduct.price}}</h2>
+        </div>
+        <div>
+            <label>Designed by: {{selectedProduct.designerId}}</label>
+
+        </div>
+        <hr style="height:1px;border:none;color:#333;background-color:#333;">
+
+        <div>
+            <h3>{{selectedProduct.shortDescription}}</h3>
+        </div>
+        <div>
+            <label>Fabric:</label>
+            <p>{{selectedProduct.fabric}}</p>
+        </div>
+        <div>
+            <label>SELECT SIZE</label><br/>
+            <span ng-repeat="size in sizes" style="height:50px;">
+                  <button ng-click="getSelectedValue($index); selected='selectd'"
+                          ng-class="{'activeButton':sizeSelected === 'selectd'}"
+                          style="border:1px solid #E84A5F; border-radius: 22px;background-color:white;">{{size}}
+                  </button>
+            </span>
+        </div>
+        <br/>
+
+        <div>
+            <label>DELIVERY TIME</label><br/>
+            <p>Please enter pincode to check delivery time</p>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="pincode"  name="pincode" required style="width:150px;"/>
+            </div>
+        </div>
+
         <div class="row">
-           <!-- <div class="col-md-4">
-        <button class="btn btn-default" ng-click="buyNow()" style="background-color: peachpuff">
-            BUY NOW
-            </button>
-            </div>-->
+            <!-- <div class="col-md-4">
+                <button class="btn btn-default" ng-click="buyNow()" style="background-color: peachpuff">
+                 BUY NOW
+                 </button>
+             </div>-->
             <div class="col-md-4">
-        <button class="btn btn-default" ng-click="addToCart()" style="background-color: peachpuff"  ng-if="!productAddedToCart">
-            ADD TO CART
-        </button>
-                <button class="btn btn-default" ng-click="" style="background-color: peachpuff" ng-if="productAddedToCart">
+                <button class="btn btn-default" ng-click="addToCart()" style="background-color: peachpuff"
+                        ng-if="!productAddedToCart">
+                    ADD TO CART
+                </button>
+                <button class="btn btn-default" ng-click="" style="background-color: peachpuff"
+                        ng-if="productAddedToCart">
                     GO TO CART
                 </button>
+            </div>
         </div>
-        </div>
-    </div>
+
+        <hr style="height:1px;border:none;color:#333;background-color:#333;">
+
+        <div>
+            <label>Material and Care</label><br/>
+            <p>{{selectedProduct.care}}</p>
+            </div>
     </div>
 </div>

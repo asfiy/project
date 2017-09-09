@@ -15,6 +15,11 @@
                 url: '/server/products/retrieveProductsBasedOnCategory',
                 isArray: true
             },
+            retrieveProductsBasedOnDesigner: {
+                method: 'GET',
+                url: '/server/products/retrieveProductsBasedOnDesigner',
+                isArray: true
+            },
             getProductById: {
                 method: 'GET',
                 url: '/server/products/getProductById'
