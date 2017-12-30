@@ -23,7 +23,18 @@
             getProductById: {
                 method: 'GET',
                 url: '/server/products/getProductById'
+            },
+            getProductRemovingReasons:{
+                method: 'GET',
+                url: '/server/products/getProductRemovingReasons',
+                isArray: true
+            },
+            removeProduct:{
+                method: 'POST',
+                url: '/server/products/removeProduct'
             }
+
+
         });
     }
 })();

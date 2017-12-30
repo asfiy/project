@@ -5,77 +5,67 @@
     'use strict';
 
     angular.module('project').controller('CartController', cartController);
-    cartController.$inject = ['$scope', '$http', '$state','$mdDialog'];
+    cartController.$inject = ['$scope', '$http', '$state','cartList'];
 
-    function cartController($scope, $http, $state,$mdDialog) {
-        $scope.cartItems =[];
-        var config = {
-            loggedInUser  :'asfi'
+    function cartController($scope, $http, $state,cartList) {
+        $scope.cartList = cartList;
+        $scope.gridOptions = {
+            data: 'cartList',
+            enableGridMenu: false,
+            enableColumnResizing: true,
+            enableSorting: false,
+            enableHorizontalScrollbar: 0,
+            enableVerticalScrollbar: 0,
+            gridMenuShowHideColumns: false,
+            rowHeight:220
         };
-        $http({method:'POST',url:'/server/cart/getCartItems',data:config}).then(function (result){
-            $scope.content = result.data.cartList;
-        });
 
-
-
-        ///////////////
-        $scope.toggleSearch = false;
-
-        $scope.headers = [
+        $scope.gridOptions.columnDefs = [
             {
-                name:'',
-                field:'thumb' //need to add pic
-            },{
-                name: 'Description',
-                field: 'productInformation.shortDescription'
-            },{
-                name:'Price',
-                field: 'price'
-            },{
-                name: 'Last Modified',
-                field: 'last_modified'
+                field: "productInformation.productImages",
+                displayName: "Product",
+                enableColumnMenu: false,
+                minWidth: 250,
+                cellTemplate: '<div class="ngCellText cellActive" ng-repeat="productImage in row.entity.productInformation.productImages"><div ng-if="productImage.intialImage">' +
+                '<img src="{{productImage.fileUrl}}" height="220px;" width="200px;"  alt="Washed Out"></div></div>'
+            },
+            {
+                field: "productInformation.description",
+                displayName: "Description",
+                enableColumnMenu: false,
+                minWidth: 250,
+                cellTemplate: '<div class="ngCellText cellActive" align="center">{{row.entity.productInformation.description}}</div>'
+            },
+            {
+                field: "productInformation.price",
+                displayName: "Price",
+                enableColumnMenu: false,
+                minWidth: 250,
+                cellTemplate: '<div class="ngCellText cellActive" >{{row.entity.productInformation.price}}</div>'
             }
         ];
 
-        $scope.custom = {name: 'bold', description:'grey',last_modified: 'grey'};
-        $scope.sortable = ['name', 'description', 'last_modified'];
-        $scope.thumbs = 'thumb';
-        $scope.count = 3;
-
-
-        //////////////////////
-        $scope.cancelOrder = function(ev,$index) {
-            // Appending dialog to document.body to cover sidenav in docs app
-            var confirm = $mdDialog.confirm()
-                .title('Are you sure to cancel the order?')
-                .targetEvent(ev)
-                .ok('Cancel Order')
-                .cancel('Not Now');
-
-            $mdDialog.show(confirm).then(function() {
-                $scope.cartItems.splice($index,1);
-            }, function() {
-            });
+        $scope.getTableHeight = function () {
+            var rowHeight = 250, headerHeight = 30;
+            return {
+                height: ($scope.cartList.length * rowHeight + headerHeight) + "px"
+            };
         };
 
-        $scope.showTrackingInformation = function(ev,$index) {
-            $mdDialog.show({
-                controller:'TrackingController',
-                templateUrl: 'cart/Track-information.tpl.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose:true
-            })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
+        $scope.showOrderInfo = function(){
+            console.log("in ");
         };
 
-
+        angular.extend($scope, {
+            showOrdersPage: function (order) {
+                $state.go('orderedProductInfo',{order:order},{reload:true});
+            }
+        });
 
     }
+
+
+
 })();
 
 
@@ -105,9 +95,9 @@ angular.module('project').directive('mdTable', function () {
                 $scope.predicate = predicate;
             };
             $scope.order($scope.sortable[0],false);
-            $scope.getNumber = function (num) {
+            /*$scope.getNumber = function (num) {
                 return new Array(num);
-            };
+            };*/
             $scope.goToPage = function (page) {
                 $scope.tablePage = page;
             };

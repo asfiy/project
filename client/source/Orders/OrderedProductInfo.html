@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row" style="width:100%">
+            <br/>
+
+            <div class="col-lg-2" align="right">
+                <div ng-repeat="image in productImages">
+                    <div class="row">
+                        <img ng-src="{{image.fileUrl}}" height="70px;" width="70px;" ng-click="changeImage($index)">
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" ng-repeat="img in productImages"
+                            ng-class="{active: !$index}" data-slide-to="{{img.fileUrl}}"></li>
+                    </ol>
+                    <!--
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                </ol>
+                    -->
+
+                    <div class="carousel-inner">
+                        <div class="item" ng-class="{active:!$index}" ng-repeat="img in productImages">
+                            <img ng-src="{{img.fileUrl}}" ng-click="showImages($event,$index)">
+                        </div>
+                    </div>
+
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-lg-4" align="left">
+
+        <div ng-if="orderedProduct.orderStatus.status != 'In Progress'">
+            <button ng-click="processStarted()">Process started</button>
+        </div>
+        <div ng-if="orderedProduct.orderStatus.status == 'In Progress'">
+            <label>Status</label>
+            <p>{{orderedProduct.orderStatus.status}}</p>
+        </div>
+        <div>
+            <strong>Product Code:</strong>
+            <label>{{orderedProduct.productInformation.productCode}}</label>
+        </div>
+        <div>
+            <strong>Product Ordered On:</strong>
+
+        </div>
+        <br/>
+
+        <div>
+            <strong>Product Delivery Date:</strong>
+            <label>{{orderedProduct.expectedDeliveryDate}}</label>
+        </div>
+        <br/>
+
+        <div>
+            <strong>Is the product ready:</strong>
+            <select class="form-control"
+                    ng-model="isProductReady"
+                    ng-options="opt.key for opt in yesOrNoList">
+            </select></div>
+        <br/>
+
+        <div>
+            <strong>Date product will be ready</strong>
+        </div>
+        <br/>
+
+        <div>
+            <strong>Your product should be ready by:</strong>
+
+        </div>
+        <br/>
+
+        <div>
+            <strong>Your product should be ready by:</strong>
+            <label>{{orderedProduct.expectedDeliveryDate}}</label>
+
+        </div>
+<br/>
+        <div class="row section">
+            <div class="col-lg-8">
+                <label>Delivery Address</label>
+               <p> {{orderedProduct.deliveryAddress.address}}<br/>
+                {{orderedProduct.deliveryAddress.city}}<br/>
+                {{orderedProduct.deliveryAddress.pinCode}}<br/></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+</div>

@@ -24,6 +24,12 @@
             getProductById: function(productId){
                 return Product.getProductById({productId:productId}).$promise;
 
+            },
+            getProductRemovingReasons: function(){
+                return Product.getProductRemovingReasons().$promise;
+            },
+            removeProduct: function(removeReasonId,productId){
+                return Product.removeProduct({removeReasonId:removeReasonId, productId: productId}).$promise;
             }
         };
 

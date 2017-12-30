@@ -45,7 +45,7 @@ class ProductController {
 
             ImageIO.write(bImageFromConvert, "jpg", inputFile);
             arrayInputStream.close()
-            productImage.fileUrl =inputFile
+            productImage.fileUrl ="images\\ProductImages\\" +file.fileItem.fileName
             productImage.contentType = file.contentType
             productImage.fileName = file.fileItem.fileName
             productInformation.addToProductImages(productImage)
@@ -86,4 +86,18 @@ class ProductController {
         render selectedProduct as JSON
     }
 
+    def getProductRemovingReasons(){
+        List<ProductRemoveReason> productRemoveReasonList = ProductRemoveReason.findAll()
+        render productRemoveReasonList as JSON
+    }
+
+    def removeProduct(){
+        def result = [:]
+        def req = new JSONObject(request.JSON)
+        ProductInformation productInformation = ProductInformation.findById(req.productId)
+        ProductRemoveReason productRemoveReason = ProductRemoveReason.findById(req.removeReasonId)
+        productInformation.productRemoveReason = productRemoveReason
+        productInformation.isProductRemoved = true
+        respond productService.saveProductInformation(productInformation)
+    }
 }

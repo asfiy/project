@@ -5,22 +5,34 @@
     'use strict';
 
     angular.module('project').directive('designerLogin', designerLogin);
-    designerLogin.$inject = ['LoginService'];
+    designerLogin.$inject = ['LoginService','$timeout'];
 
-    function designerLogin(loginService) {
+    function designerLogin(loginService,$timeout) {
         return {
+            priority: 1,
+            replace: true,
             link: function (scope, element, attrs) {
-               function toggleVisibilityBasedOnPermission() {
-                    if (!loginService.isLoggedIn()) {
+                scope.$watch('toReload', function(newVal, oldVal){
+                    if (scope.toReload==true){
                         element.show();
-                    } else {
-                        element.hide();
                     }
-               }
+                });
+                $timeout(function () {
+                    console.log("in login dir");
+                    function toggleVisibilityBasedOnPermission() {
 
-                toggleVisibilityBasedOnPermission();
+                        console.log("in login fun" + loginService.isLoggedIn());
+                        if (!loginService.isLoggedIn()) {
+                            element.show();
+                        } else {
+                            element.hide();
+                        }
+                    }
+
+                    toggleVisibilityBasedOnPermission();
+                }, 0);
             }
-        };
+        }
     }
 })();
 

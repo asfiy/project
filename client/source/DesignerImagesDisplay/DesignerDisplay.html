@@ -15,15 +15,18 @@
     </md-content>
     -->
 
-
+<div class="row">
+    <button ng-click="addNewProducts()" class="btn btn-primary">Add New Products</button>
+</div>
 
     <div flex-xs layout="column">
         <div  ng-repeat="product in matrix">
             <div class="col-xs-3" ng-repeat="item in product" style="width: 280px;">
+                <div ng-if="!item.isProductRemoved">
                 <md-card>
                     <div class="col-xs-3" ng-repeat="image in item.productImages">
                         <div ng-if="image.intialImage">
-                            <a ui-sref="productPage({productId:'{{item.id}}'})"><img src="{{image.fileUrl}}" height="250px;" width="200px;"  alt="Washed Out"></a>
+                            <a ui-sref="designerProductDisplayPage({productId:'{{item.id}}'})"><img src="{{image.fileUrl}}" height="250px;" width="200px;"  alt="Washed Out"></a>
                         </div>
                     </div>
 
@@ -31,11 +34,11 @@
                         <label>Rs {{item.price}}</label>
                     </md-card-actions>
                     <md-card-actions layout="row" layout-align="center">
-                        <md-button ng-click="updateInformation()">Update</md-button>
-                        <md-button ng-click="removeProduct()">Remove</md-button>
+                        <md-button ng-click="updateInformation(item.id)">Update</md-button>
+                        <md-button ng-click="removeProduct(item)">Remove</md-button>
                     </md-card-actions>
                 </md-card>
-
+                </div>
             </div>
         </div>
     </div>

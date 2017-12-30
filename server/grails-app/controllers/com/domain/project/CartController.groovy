@@ -1,5 +1,6 @@
 package com.domain.project
 
+import grails.converters.JSON
 import org.codehaus.groovy.grails.web.json.JSONObject
 
 class CartController {
@@ -7,11 +8,11 @@ class CartController {
 
     def getCartItems() {
         def req = new JSONObject(request.JSON)
-        println req.loggedInUser;
+        println params.userId;
 
-        def cartList = Cart.findAllByUser(User.findByUserName(req.loggedInUser))
+        def cartList = Cart.findAllByUser(User.findByUserName(params.userId))
         def result =[:]
         result = [success:true,cartList:cartList]
-        respond result
+        render cartList as JSON
     }
 }

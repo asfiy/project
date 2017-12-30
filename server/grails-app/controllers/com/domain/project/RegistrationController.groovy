@@ -14,8 +14,13 @@ class RegistrationController {
         DesignerInformation designerInformation = new DesignerInformation()
         def information = new JSONObject(request.JSON)
         bindData(designerInformation,information)
-        registrationService.registerDesigner(designerInformation)
-        respond status:OK
+        char[] verificationCode = registrationService.verificationCodeGeneration()
+        designerInformation.verificationCode = verificationCode.toString()
+        def result = registrationService.registerDesigner(designerInformation)
+        if(result.success){
+            registrationService.sendRegistrationVerificationCode(designerInformation);
+        }
+        respond result
     }
 
     def registerUser() {
@@ -26,4 +31,21 @@ class RegistrationController {
         respond status:OK
     }
 
+    def verifyCode(){
+        def result=[:]
+        def designerData = new JSONObject(request.JSON)
+        DesignerInformation designerInformation = DesignerInformation.findById(designerData.id)
+        if(designerData.verification.equals(designerInformation.verificationCode)){
+            result.success = true
+        }
+        result.success = false
+    }
+
+    def designerVerification(){
+        def data = new JSONObject(request.JSON)
+        DesignerInformation  designerInformation = DesignerInformation.findById(data.id)
+        bindData(designerInformation,data)
+        def result = registrationService.registerDesigner(designerInformation)
+        respond result
+    }
 }

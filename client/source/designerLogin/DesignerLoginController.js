@@ -5,9 +5,9 @@
     'use strict';
 
     angular.module('project').controller('DesignerLoginController', designerLoginController);
-    designerLoginController.$inject = ['$scope', '$http', '$state','sessionService'];
+    designerLoginController.$inject = ['$window','$route','$rootScope','$scope', '$http', '$state','sessionService'];
 
-    function designerLoginController($scope, $http, $state,sessionService) {
+    function designerLoginController($window,$route,$rootScope,$scope, $http, $state,sessionService) {
         $scope.designerLogin={};
 
         $scope.login = function(){
@@ -16,14 +16,18 @@
                     console.log("in controller");
                     if(result.statusText && result.data.designerInformation.id){
                         sessionService.set('user',result.data.designerInformation.id);
-                        $state.go('designerHomePage',{designerId:result.data.designerInformation.id});
+                      //  $window.location.reload();
+                        $rootScope.toReload = true;
+                        $scope.$watch('thingToWatchForRefershing', function (newValue, oldValue) {
+                            $scope.$emit('somethingChangedInFirstDirective', $rootScope.toReload);
+                        });
+                        $state.go('designerHomePage',{designerId:result.data.designerInformation.id},{reload:true});
                     }else{
                         $state.go('designerLogin');
                     }
                 }).catch(function () {
                     console.log("in error");
                 });
-
             }
         };
 

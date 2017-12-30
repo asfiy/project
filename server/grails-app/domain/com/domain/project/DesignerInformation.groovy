@@ -22,10 +22,14 @@ class DesignerInformation {
     String voterIDNumber
     String aadharCardNumber
     String password
+    String verificationCode
+    Boolean isVerified
 
     static constraints = {
         aadharCardNumber(nullable:true)
         voterIDNumber(nullable:true)
         panCardNumber(nullable:true)
+        verificationCode(nullable:true)
+        isVerified(nullable: true)
     }
 }

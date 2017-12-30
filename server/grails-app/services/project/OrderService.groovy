@@ -30,4 +30,14 @@ class OrderService {
         }
         return result
     }
+
+    def updateProcessStarted(orderInformation){
+        def result=[:]
+        if(orderInformation.validate() && orderInformation.save(failOnError:true,flush:true)){
+            result = [orderInformation:orderInformation,success:true]
+        }else{
+            result = [success: false]
+        }
+        return result
+    }
 }

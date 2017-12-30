@@ -1,5 +1,7 @@
 package com.domain.project
 
+import com.sun.org.apache.xpath.internal.operations.Bool
+
 class ProductInformation {
 
     String productCode
@@ -19,10 +21,16 @@ class ProductInformation {
     Boolean showOnDesktop
     Set productImages =[]
     Category category
+    Boolean isProductRemoved
+    ProductRemoveReason productRemoveReason
 
     static hasMany = [productImages : ProductImages]
 
     static constraints = {
+        isProductRemoved nullable: true
+        productRemoveReason nullable: true
+        //TODO: add field on ui and remove this
+        showOnDesktop nullable: true
     }
 
     static mapping = {

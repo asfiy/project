@@ -2,6 +2,8 @@ package com.domain.project
 
 import org.codehaus.groovy.grails.web.json.JSONObject
 
+import javax.persistence.criteria.Order
+
 class OrderController {
     static responseFormats = ['json']
 
@@ -34,4 +36,18 @@ class OrderController {
 
         respond orderService.addToCart(cart)
     }
+
+    def getActiveOrdersForDesigners(){
+        List<OrderInformation> activeOrdersList = OrderInformation.findAllByDesignerId(params.designerId)
+        respond activeOrdersList
+    }
+
+    def updateProcessStarted(){
+        def req = new JSONObject(request.JSON)
+
+        OrderInformation orderInformation = OrderInformation.findById(req.orderId)
+        orderInformation.orderStatus = OrderStatus.findByStatus(req.orderStatus)
+        respond orderService.updateProcessStarted(orderInformation)
+    }
+
 }

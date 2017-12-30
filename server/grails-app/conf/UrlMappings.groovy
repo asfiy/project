@@ -16,12 +16,17 @@ class UrlMappings {
 
         "/products/retrieveProductsBasedOnDesigner"(controller: 'product',action: 'retrieveProductsBasedOnDesigner')
         "/products/getProductById"(controller: 'product',action: 'getProductById')
+        "/products/getProductRemovingReasons"(controller: 'product',action: 'getProductRemovingReasons')
+        "/products/removeProduct"(controller: 'product',action: 'removeProduct')
 
         "/registration/registerUser"(controller: 'registration',action: 'registerUser')
         "/login/userLogin"(controller: 'login',action: 'userLogin')
 
         "/orders/buyNow"(controller: 'Order',action: 'buyNow')
         "/orders/addToCart"(controller: 'Order',action: 'addToCart')
+        "/orders/getActiveOrdersForDesigners"(controller: 'Order',action: 'getActiveOrdersForDesigners')
+        "/orders/updateProcessStarted"(controller: 'Order',action: 'updateProcessStarted')
+
         "/cart/getCartItems"(controller: 'Cart',action: 'getCartItems')
         "/category/getCategories"(controller: 'Category',action: 'getCategories')
         "/"(view:"/index.html")

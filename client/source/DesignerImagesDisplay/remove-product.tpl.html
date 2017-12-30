@@ -1,0 +1,15 @@
+<div style="height: 400px;width: 700px;">
+    <div class="row" align="center">
+    <md-input-container>
+        <label>Please provide a reason:</label>
+        <md-select ng-model="removeReason">
+            <md-option ng-repeat="removeReason in removeReasonsList" value="{{removeReason.id}}">{{removeReason.reason}}</md-option>
+        </md-select>
+    </md-input-container>
+    </div>
+
+    <div class="row" align="center">
+    <button type="button" class="btn btn-primary"  ng-click="submitRemovingReason(removeReason)">Submit</button>
+    <button type="button" class="btn btn-primary"  ng-click="cancel()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row" style="width:100%">
+            <br/>
+
+            <div class="col-lg-2" align="right">
+                <div ng-repeat="image in selectedProduct.productImages">
+                    <div class="row">
+                        <img ng-src="{{image.fileUrl}}" height="70px;" width="70px;" ng-click="changeImage($index)">
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" ng-repeat="img in selectedProduct.productImages"
+                            ng-class="{active: !$index}" data-slide-to="{{img.fileUrl}}"></li>
+                    </ol>
+                    <!--
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                </ol>
+                    -->
+
+                    <div class="carousel-inner">
+                        <div class="item" ng-class="{active:!$index}" ng-repeat="img in selectedProduct.productImages">
+                            <img ng-src="{{img.fileUrl}}" ng-click="showImages($event,$index)">
+                        </div>
+                    </div>
+
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row section" align="center">
+    <div class="col-lg-8" style="width:80%">
+        <div class="row" align="center">
+
+            <uib-accordion>
+                <div uib-accordion-group class="panel-default" is-disabled="false" is-open="isOpen">
+                    <uib-accordion-heading>
+                        Product Information
+                        <i class="glyphicon"
+                           ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-up': !isOpen}"
+                           style="padding-left: 5px;"></i>
+                    </uib-accordion-heading>
+                    <div class="bootstro tour-rt-s20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Number of sales:</label>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bootstro tour-rt-s20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Number of sales:</label>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bootstro tour-rt-s20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Number of sales:</label>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+    </div>
+</div>
+
+
+<div class="row section">
+    <div class="col-lg-8" style="width:80%">
+        <div class="row" align="center">
+
+            <uib-accordion>
+                <div uib-accordion-group class="panel-default" is-disabled="false" is-open="isOpen">
+                    <uib-accordion-heading>
+                        Feedback
+                        <i class="glyphicon"
+                           ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-up': !isOpen}"
+                           style="padding-left: 5px;"></i>
+                    </uib-accordion-heading>
+                    <div class="bootstro tour-rt-s20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Reviews:</label>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bootstro tour-rt-s20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Number of sales:</label>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bootstro tour-rt-s20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Number of sales:</label>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+    </div>
+</div>

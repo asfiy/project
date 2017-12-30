@@ -108,13 +108,12 @@
         <button type="button" class="btn btn-primary" ng-click="onCancel()">
             Cancel
         </button>
-<button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)" ng-disabled="designerregistrationForm.$invalid">
+<!--<button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)" ng-disabled="designerregistrationForm.$invalid">
     Next
-
-
-
-</button>
-
+</button>-->
+        <button type="button" class="btn btn-primary" ng-click="onStep1Completion(designerRegistration)">
+            Next
+        </button>
     </div>
     </div>
 
@@ -214,7 +213,11 @@
         <button type="button" class="btn btn-primary" ng-click="onPrevious('Step2')">
             Previous
         </button>
-            <button type="button" class="btn btn-primary" ng-disabled="designerregistrationForm.$invalid" ng-click="onStep2Completion('Step2')">
+          <!--  <button type="button" class="btn btn-primary" ng-disabled="designerregistrationForm.$invalid" ng-click="onStep2Completion('Step2')">
+                Next
+            </button>-->
+
+            <button type="button" class="btn btn-primary" ng-click="onStep2Completion('Step2')">
                 Next
             </button>
         <button type="button" class="btn btn-primary" ng-click="onCancel()">
@@ -255,7 +258,10 @@
             <input type="text" class="form-control"  name="aadharCardNumber" ng-model="designerInformation.aadharCardNumber"  required/>
         </div>
     </div>
+<!--
     <div class="col-lg-8" ng-if="designerInformation.citizenDetails == 'Voter ID'">
+-->
+        <div class="col-lg-8">
 
         <label class="control-label required-field pull-left">Voter ID Card Number</label>
 
@@ -267,7 +273,10 @@
             <button type="button" class="btn btn-primary" ng-click="onPrevious('Step3')">
                 Previous
             </button>
-            <button type="button" class="btn btn-primary" ng-disabled="designerregistrationForm.$invalid" ng-click="submitDesignerRegistration()">
+            <!--<button type="button" class="btn btn-primary" ng-disabled="designerregistrationForm.$invalid" ng-click="submitDesignerRegistration()">
+                Submit
+            </button>-->
+            <button type="button" class="btn btn-primary"  ng-click="submitDesignerRegistration()">
                 Submit
             </button>
             <button type="button" class="btn btn-primary" ng-click="onCancel()">

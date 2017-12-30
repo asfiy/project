@@ -55,6 +55,23 @@
 
     <div ng-repeat ="file in files.products">
         <label>{{file.name}}</label>
+        <div class="row">
+            <img ng-src="{{file.fileUrl}}" height="100px;" width="100px;">
+        </div>
+    </div>
+    <div ng-if="productInformation.productImages">
+        <ul>
+            <li ng-repeat="image in productInformation.productImages" style="display: inline;list-style-type: none;padding-right: 20px;">
+                <img style="width: 10%" ng-src="{{image.fileUrl}}">
+            </li>
+        </ul>
+
+       <!-- <div ng-repeat ="image in productInformation.productImages">
+            <label>{{image.name}}</label>
+            <div style="white-space:nowrap">
+                <img ng-src="{{image.fileUrl}}" height="100px;" width="100px;">
+            </div>
+        </div>-->
     </div>
     <div>
         <button type="button" class="btn btn-primary" ng-click="saveProductInformation()">

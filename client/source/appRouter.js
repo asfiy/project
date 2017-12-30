@@ -30,11 +30,41 @@
                 templateUrl: 'designerRegistration/DesignerRegistration.html',
                 controller:'DesignerRegistrationController'
             })
-            .state('cart',{
-                url:'/cart',
+            .state('verificationCode',{
+                url:'/verificationCode?designerId',
+                templateUrl:'designerRegistration/VerificationCode.html',
+                resolve: {
+                    designerInformation: function (DesignerService, $stateParams) {
+                        return DesignerService.getDesignerInformation($stateParams.designerId).then(function (response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'VerificationController'
+            })
+            .state('cartList',{
+                url:'cart?userId',
                 templateUrl:'cart/Cart.html',
-                controller:'CartController',
-                data:{}
+                resolve: {
+                    cartList: function (CartService, $stateParams) {
+                        return CartService.getCartItems($stateParams.userId).then(function (response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'CartController'
+            })
+            .state('cartPage',{
+                url:'cart?userId',
+                templateUrl:'cart/Cart.html',
+                resolve:{
+                    cartList: function(CartService,$stateParams){
+                        return CartService.getCartItems($stateParams.userId).then(function(response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'CartController'
             })
             .state('cancelOrder',{
                 url:'/cancel',
@@ -42,9 +72,16 @@
                 controller:'CancelOrderController'
             })
             .state('productUpload',{
-                url:'/UploadProducts',
+                url:'/UploadProducts?productId',
                 templateUrl:'upload/UploadProducts.html',
                 resolve: {
+                    productInformation: function(ProductService,$stateParams){
+                        if($stateParams.productId){
+                            return ProductService.getProductById($stateParams.productId).then(function(response) {
+                                return response;
+                            });
+                        }
+                    },
                     categories: function(CategoryService){
                         return CategoryService.getCategories().then(function(response) {
                             return response;
@@ -75,6 +112,18 @@
                 },
                 controller:'ProductOrderController'
             })
+            .state('designerProductDisplayPage',{
+                url:'/productDisplay?productId',
+                templateUrl: 'DesignerImagesDisplay/DesignerSingleProductDisplay.html',
+                resolve: {
+                    selectedProduct: function(ProductService,$stateParams){
+                        return ProductService.getProductById($stateParams.productId).then(function(response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'DesignerProductsDisplayController'
+            })
             .state('products',{
                 url:'/products?category',
                 templateUrl: 'ProductPages/ProductsDisplay.html',
@@ -98,6 +147,29 @@
                     }
                 },
                 controller:'DesignerDisplayController'
+            })
+            .state('designerOrder',{
+                url:'/designerOrder?designerId',
+                templateUrl: 'Orders/ProductOrdersPage.html',
+                resolve: {
+                    ordersList: function(OrderService,$stateParams){
+                        return OrderService.getActiveOrdersForDesigners($stateParams.designerId).then(function(response) {
+                            return response;
+                        });
+                    }
+                },
+                controller:'ProductsOrderController'
+            })
+            .state('orderedProductInfo',{
+                url:'/productInfo',
+                params :{order:null},
+                templateUrl: 'Orders/OrderedProductInfo.html',
+                resolve: {
+                    orderedProduct: function(ProductService,$stateParams){
+                      return $stateParams.order;
+                    }
+                },
+                controller:'OrderedProductInfoController'
             })
             .state('checkout',{
                 url:'/checkout',

@@ -8,6 +8,8 @@ class ProductImages {
     Boolean intialImage
     static  belongsTo = [ProductInformation]
     static constraints = {
+        //TODO: add checkbox on upload screen and make it mandatory
+        intialImage nullable: true
     }
     static mapping = {
         tablePerHierarchy true

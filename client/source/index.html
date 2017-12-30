@@ -15,7 +15,10 @@
 <!--
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
@@ -65,7 +68,7 @@
     <script type="application/javascript" src="appRouter.js"></script>
     <script type="application/javascript" src="designerRegistration/DesignerRegistrationController.js"></script>
     <script type="application/javascript" src="designerLogin/DesignerLoginController.js"></script>
-    <script type="application/javascript" src="cart/CartController.js"></script>
+
     <script type="application/javascript" src="upload/UploadProductsController.js"></script>
     <script type="application/javascript" src="upload/UploadProducts.js"></script>
     <script type="application/javascript" src="designerLogin/LoginService.js"></script>
@@ -82,6 +85,21 @@
 
     <script type="application/javascript" src="ProductPages/ImageController.js"></script>
     <script type="application/javascript" src="DesignerImagesDisplay/DesignerDisplayController.js"></script>
+
+    <script type="application/javascript" src="Orders/ProductsOrderController.js"></script>
+    <script type="application/javascript" src="Orders/OrderService.js"></script>
+    <script type="application/javascript" src="Orders/Order.js"></script>
+    <script type="application/javascript" src="Orders/OrderedProductInfoController.js"></script>
+
+    <script type="application/javascript" src="headerComponent/HeaderComponentDirective.js"></script>
+
+    <script type="application/javascript" src="cart/CartService.js"></script>
+    <script type="application/javascript" src="cart/Cart.js"></script>
+    <script type="application/javascript" src="cart/CartController.js"></script>
+    <script type="application/javascript" src="DesignerImagesDisplay/DesignerProductsDisplayController.js"></script>
+    <script type="application/javascript" src="designerRegistration/DesignerService.js"></script>
+    <script type="application/javascript" src="designerRegistration/Designer.js"></script>
+    <script type="application/javascript" src="designerRegistration/VerificationController.js"></script>
 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 
@@ -114,115 +132,7 @@
 <body>
 
 <div class="container" style="position: relative;z-index: 9999;top: 0;">
-    <div class="row" style="height: 50px;">
-    <nav class="navbar navbar-default navbar-center-padding">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Cortuaara</a>
-        </div>
-
-
-        <div class="collapse navbar-collapse js-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown mega-dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women <span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
-
-                    <ul class="dropdown-menu mega-dropdown-menu row">
-                       <!-- <li class="col-sm-3">
-                            <ul>
-                                <li class="dropdown-header">New in Stores</li>
-                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                            <h4><small>Summer dress floral prints</small></h4>
-                                            <button class="btn btn-primary" type="button">49,99 €</button>
-                                            <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
-                                        </div>
-                                        &lt;!&ndash; End Item &ndash;&gt;
-                                        <div class="item">
-                                            <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                            <h4><small>Gold sandals with shiny touch</small></h4>
-                                            <button class="btn btn-primary" type="button">9,99 €</button>
-                                            <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
-                                        </div>
-                                        &lt;!&ndash; End Item &ndash;&gt;
-                                        <div class="item">
-                                            <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                            <h4><small>Denin jacket stamped</small></h4>
-                                            <button class="btn btn-primary" type="button">49,99 €</button>
-                                            <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
-                                        </div>
-                                        &lt;!&ndash; End Item &ndash;&gt;
-                                    </div>
-                                    &lt;!&ndash; End Carousel Inner &ndash;&gt;
-                                </div>
-                                &lt;!&ndash; /.carousel &ndash;&gt;
-                                <li class="divider"></li>
-                                <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-                            </ul>
-                        </li>-->
-                        {{categories}}
-                        <li class="col-sm-3">
-                            <ul ng-repeat ="category in categories">
-                                <li><a ui-sref="products({category:'{{category.name}}'})">{{category.name}}</a></li>
-                            </ul>
-                        <ul>
-                                <li class="dropdown-header">Indian Wear</li>
-                                <li><a ui-sref="products({category:'Ghagra'})">Ghagras</a></li>
-                                <li><a href="#">Anarkalis</a></li>
-                                <li><a href="#">Skirts</a></li>
-                                <li><a href="#">Sarees</a></li>
-                                <li><a href="#">Dupattas</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3">
-                            <ul>
-                                <li class="dropdown-header">Western Wear</li>
-                                <li><a href="#">Easy to customize</a></li>
-                                <li><a href="#">Glyphicons</a></li>
-                                <li><a href="#">Pull Right Elements</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Pants</li>
-                                <li><a href="#">Coloured Headers</a></li>
-                                <li><a href="#">Primary Buttons & Default</a></li>
-                                <li><a href="#">Calls to action</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </li>
-
-
-                <li class="dropdown mega-dropdown navbar-right-align" designer-login>
-                    <a ui-sref="designerRegistration">Designer Registration</a>
-                </li>
-                <li class="dropdown mega-dropdown navbar-right-align">
-                    <a ui-sref="cart">Cart</a>
-                </li>
-                <li class="dropdown navbar-right-align" designer-login>
-                    <a  ui-sref="designerLogin">Designer Login</a>
-
-                </li>
-                <li class="dropdown navbar-right-align" designer-login>
-                    <a  ui-sref="userLogin">LogIn</a>
-                </li>
-
-                <li class="dropdown navbar-right-align" designer-login>
-                    <a  ui-sref="userRegistration">SignUp</a>
-
-                </li>
-            </ul>
-
-        </div>
-
-    </nav>
-        </div>
+<header-component></header-component>
 </div>
 
 

@@ -41,11 +41,12 @@
 
         $scope.submitDesignerRegistration = function(){
             $http({method:'POST',url:'/server/registration/registerDesigner',data:$scope.designerInformation}).then(function (result){
-                    console.log("in controller");
-                $state.go('productUpload');
+                console.log("in controller");
+                $state.go('verificationCode',{designerId: result.data.designerInformation.id});
             }).catch(function () {
                 console.log("in error");
             });
-        }
+        };
+
     }
 })();

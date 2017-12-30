@@ -5,7 +5,7 @@
     'use strict';
 
     var REST_URL = "/api", moduleName = "project";
-    angular.module(moduleName, ['ngAnimate', 'ui.bootstrap', 'ngMaterial','ui.router','ngResource','ngFileUpload','ng.shims.placeholder','checklist-model','material.svgAssetsCache']);
+    angular.module(moduleName, ['ui.bootstrap','ngRoute','ngAnimate', 'ngMaterial','ui.router','ui.grid','ngResource','ngFileUpload','ng.shims.placeholder','checklist-model','material.svgAssetsCache']);
 
     var app = angular.module(moduleName);
         angular.element(document).ready(function() {
@@ -36,6 +36,13 @@
                 event.preventDefault();
             }
         });
+
+            function loggedIn(){
+                if(loginService.isLoggedIn()){
+                    return true;
+                }
+                return false;
+            }
     };
 
 })();

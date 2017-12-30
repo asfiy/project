@@ -106,6 +106,45 @@ environments {
     }
 }
 
+grails.plugin.springsecurity.filterNames = ['anonymousAuthenticationFilter']
+grails.plugin.springsecurity.filterChain.filterNames = ['anonymousAuthenticationFilter']
+
+
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.domain.project.User'
+grails.plugin.springsecurity.requestMap.className = 'com.domain.project.Requestmap'
+grails.plugin.springsecurity.securityConfigType = 'Annotation'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/':                              ['permitAll'],
+        '/index':                         ['permitAll'],
+        '/index.gsp':                     ['permitAll'],
+        '/**/js/**':                      ['permitAll'],
+        '/**/css/**':                     ['permitAll'],
+        '/**/images/**':                  ['permitAll'],
+        '/**/favicon.ico':                ['permitAll']
+]
+
+
+grails.plugin.springsecurity.filterChain.chainMap = [
+        '/ws/**': 'JOINED_FILTERS',
+        '/**'   : 'JOINED_FILTERS'
+]
+
+grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/error/**':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**/*.css':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**/*.js':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**/*.gif':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**/*.png':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**/*.jpg':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**/*.ico':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/login/denied':['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/ws*': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/**':['IS_AUTHENTICATED_ANONYMOUSLY']
+]
+
+
+
 // log4j configuration
 log4j.main = {
     // Example of changing the log pattern for the default console appender:
@@ -125,4 +164,17 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+}
+
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "asfiya.12791@gmail.com"
+        password = "asfiya08"
+        props = ["mail.smtp.auth":"true",
+                 "mail.smtp.socketFactory.port":"465",
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback":"false"]
+    }
 }

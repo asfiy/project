@@ -5,14 +5,15 @@
     'use strict';
 
     angular.module('project').controller('UploadProductsController', uploadProductsController);
-    uploadProductsController.$inject = ['$scope', '$http', '$state','UploadProducts','categories'];
-    function uploadProductsController($scope,$http,$state,UploadProducts,categories){
+    uploadProductsController.$inject = ['$scope', '$http', '$state','UploadProducts','categories','productInformation'];
+    function uploadProductsController($scope,$http,$state,UploadProducts,categories,productInformation){
         $scope.files={};
         $scope.sizesList = ['xs','s','m','xl'];
         $scope.productInformation ={};
         $scope.designerId ={designerId:"asfiya"};
         $scope.productInformationList =[];
         $scope.categoryList = categories;
+        $scope.productInformation = productInformation;
 
         $http({method:'POST',url:'/server/products/retrieveProducts',data:$scope.designerId}).then(function (result){
             $scope.productInformationList = result.data.productInformation;
