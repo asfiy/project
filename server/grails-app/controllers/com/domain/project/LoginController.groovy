@@ -2,10 +2,16 @@ package com.domain.project
 
 import org.codehaus.groovy.grails.web.json.JSONObject
 
+import javax.servlet.http.HttpServletResponse
+
 class LoginController {
     static responseFormats = ['json']
 
     def index() {}
+
+    def authAjax = {
+        response.sendError HttpServletResponse.SC_UNAUTHORIZED
+    }
 
     def designerLogin(){
         def result

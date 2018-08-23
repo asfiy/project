@@ -5,7 +5,7 @@
     'use strict';
 
     var REST_URL = "/api", moduleName = "project";
-    angular.module(moduleName, ['ui.bootstrap','ngRoute','ngAnimate', 'ngMaterial','ui.router','ui.grid','ngResource','ngFileUpload','ng.shims.placeholder','checklist-model','material.svgAssetsCache']);
+    angular.module(moduleName, ['ui.bootstrap','ngRoute','ngAnimate', 'ngMaterial','ui.router','ui.grid','ngResource','ngFileUpload','ng.shims.placeholder','checklist-model','material.svgAssetsCache','rzModule']);
 
     var app = angular.module(moduleName);
         angular.element(document).ready(function() {

@@ -1,23 +1,49 @@
 <div class="container-fluid">
+    <div class="row">
+        <button ng-click="addNewProducts()" class="btn btn-primary">Add New Products</button>
+    </div>
 
-    <!--
-        <md-content class="md-padding" layout-xs="column" layout="row">
-        <div flex-xs flex-gt-xs="30" layout="column">
-        <div ng-repeat="product in products">
-            <md-card>
-                <img ng-src="images/image.jpg" class="md-card-image" alt="Washed Out">
-                <md-card-actions layout="row" layout-align="center">
-                    <label>{{product.productInformation.price}}</label>
-                </md-card-actions>
-            </md-card>
-        </div>
-        </div>
-    </md-content>
-    -->
+    <nav class="navbar" style="background: #d3d3d3;position: absolute;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Filter</a>
+            </div>
+            <ul class="nav navbar-nav">
+                    <li class="dropdown mega-dropdown" style=""> <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-click="dropdownOpen= true;">Category</a>
+                    <ul class="dropdown-menu mega-dropdown-menu row" ng-if="dropdownOpen">
+                        <li class="col-sm-3">
+                            <ul ng-repeat ="category in categories">
+                                <li>  <input type="checkbox" ng-model="category.Selected"  ng-click="filterCategories(categories)">{{category.categoryName}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown mega-dropdown" style=""> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Color</a>
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                        <li class="col-sm-3">
+                            <ul>
+                                <li class="dropdown-header">Western Wear</li>
+                                <li><a href="#">Easy to customize</a></li>
+                                <li><a href="#">Glyphicons</a></li>
+                                <li><a href="#">Pull Right Elements</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Pants</li>
+                                <li><a href="#">Coloured Headers</a></li>
+                                <li><a href="#">Primary Buttons & Default</a></li>
+                                <li><a href="#">Calls to action</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Price: <div style="width:500px;">
+                        <rzslider rz-slider-model="slider.minValue"
+                              rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
+                        </div>
+                </li>
+            </ul>
 
-<div class="row">
-    <button ng-click="addNewProducts()" class="btn btn-primary">Add New Products</button>
-</div>
+        </div>
+    </nav>
 
     <div flex-xs layout="column">
         <div  ng-repeat="product in matrix">
@@ -42,4 +68,5 @@
             </div>
         </div>
     </div>
+
 </div>

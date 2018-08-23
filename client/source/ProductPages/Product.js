@@ -24,6 +24,11 @@
                 method: 'GET',
                 url: '/server/products/getProductById'
             },
+            getSimilarProducts: {
+                method: 'GET',
+                url: '/server/products/getSimilarProducts',
+                isArray: true
+            },
             getProductRemovingReasons:{
                 method: 'GET',
                 url: '/server/products/getProductRemovingReasons',
@@ -32,6 +37,19 @@
             removeProduct:{
                 method: 'POST',
                 url: '/server/products/removeProduct'
+            },
+            getHomePageImage: {
+                method: 'GET',
+                url: '/server/products/getHomePageImage'
+            },
+            getWeeklyDesigns: {
+                method: 'GET',
+                url: '/server/products/getWeeklyDesigns',
+                isArray: true
+            },
+            submitUserReview:{
+                method: 'POST',
+                url: '/server/products/submitUserReview'
             }
 
 

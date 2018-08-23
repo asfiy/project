@@ -88,13 +88,15 @@
                  </button>
              </div>-->
             <div class="col-md-4">
+                <!--TODO: Get cart details on user Login -->
                 <button class="btn btn-default" ng-click="addToCart()" style="background-color: peachpuff"
                         ng-if="!productAddedToCart">
                     ADD TO CART
                 </button>
-                <button class="btn btn-default" ng-click="" style="background-color: peachpuff"
-                        ng-if="productAddedToCart">
-                    GO TO CART
+                <!--TODO: Update user ID -->
+                <button class="btn btn-default" style="background-color: peachpuff"
+                        ng-if="productAddedToCart"><a ui-sref="cartPage({userId:'asfi'})">
+                    GO TO CART</a>
                 </button>
             </div>
         </div>
@@ -106,4 +108,38 @@
             <p>{{selectedProduct.care}}</p>
             </div>
     </div>
+
+<div class="row" >
+    <div class="col-xs-3" ng-repeat="product in similarProducts">
+        <md-card>
+            <div class="col-xs-3" ng-repeat="image in product.productImages">
+                <div ng-if="image.intialImage">
+                    <a ui-sref="productPage({productId:'{{product.id}}'})"><img src="{{image.fileUrl}}" height="250px;" width="200px;"  alt="Washed Out"></a>
+                </div>
+            </div>
+            <md-card-actions layout="row" layout-align="center">
+                <label>{{item.description}}</label>
+            </md-card-actions>
+            <md-card-actions layout="row" layout-align="center">
+                <label>Rs {{item.price}}</label>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>
+<br/><br/>
+<div class="row" >
+    <div  class="col-md-4">
+    <ul ng-repeat ="review in selectedProduct.userReview">
+        <li>{{review.userReviewComments}} <br/>
+        {{review.reviewDate}}</li>
+    </ul>
+    </div>
+</div>
+<div class="row" >
+    <div  class="col-md-4">
+    Add a Review:
+    <input type="text" ng-model="userReview">
+    <button ng-click="submitUserReview(userReview)">Submit</button>
+        </div>
+</div>
 </div>

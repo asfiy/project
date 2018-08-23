@@ -24,7 +24,7 @@ class ProductInformation {
     Boolean isProductRemoved
     ProductRemoveReason productRemoveReason
 
-    static hasMany = [productImages : ProductImages]
+    static hasMany = [productImages : ProductImages,userReview: ProductUserReview]
 
     static constraints = {
         isProductRemoved nullable: true

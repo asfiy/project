@@ -12,7 +12,7 @@
 
         $scope.login = function(){
             if($scope.designerLogin.userName && $scope.designerLogin.password){
-                $http({method:'POST',url:'/server/login/designerLogin',data:$scope.designerLogin}).then(function (result){
+                $http({method:'POST',url:'/server/login/auth',data:$scope.designerLogin}).then(function (result){
                     console.log("in controller");
                     if(result.statusText && result.data.designerInformation.id){
                         sessionService.set('user',result.data.designerInformation.id);

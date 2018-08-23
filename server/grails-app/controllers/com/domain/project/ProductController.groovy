@@ -100,4 +100,30 @@ class ProductController {
         productInformation.isProductRemoved = true
         respond productService.saveProductInformation(productInformation)
     }
+
+    def getHomePageImage(){
+        HomePageImages homePageImage = HomePageImages.findByStartDateGreaterThanEqualsAndEndDateLessThanEquals(new Date(),new Date())
+        def result = [homePageImage:homePageImage,success :true]
+        render result as JSON
+    }
+
+    def getWeeklyDesigns(){
+        List<WeeklyDesigns> weeklyDesigns = WeeklyDesigns.findAllByWeekStartDateLessThanEqualsAndWeekEndDateGreaterThanEquals(new Date(),new Date())
+        render weeklyDesigns as JSON
+    }
+
+    def getSimilarProducts(){
+        ProductInformation selectedProduct = ProductInformation.findById(params.productId)
+        List<ProductInformation> similarProductList = ProductInformation.findAllByCategory(Category.findByCategoryName(selectedProduct.category.categoryName),[max: 10])
+        render similarProductList as JSON
+    }
+
+    def submitUserReview(){
+        ProductUserReview productUserReview = new ProductUserReview()
+        productUserReview.userReviewComments = params.userReviewComments
+        productUserReview.productInformation =ProductInformation.findById(params.productId)
+        productUserReview.reviewDate = new Date()
+        //add user here
+        respond productService.submitUserReview(productUserReview)
+    }
 }

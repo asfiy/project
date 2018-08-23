@@ -18,7 +18,8 @@
             })
             .state('home',{
                 url:'/home',
-                templateUrl: 'homepage/HomePage.html'
+                templateUrl: 'homepage/HomePage.html',
+                controller:'HomePageController'
             })
             .state('designerLogin',{
                 url:'/designerLogin',
@@ -108,6 +109,11 @@
                         return ProductService.getProductById($stateParams.productId).then(function(response) {
                             return response;
                         });
+                    },
+                    similarProducts: function(ProductService,$stateParams){
+                        return ProductService.getSimilarProducts($stateParams.productId).then(function(response) {
+                            return response;
+                        });
                     }
                 },
                 controller:'ProductOrderController'
@@ -132,6 +138,11 @@
                         return ProductService.retrieveProductsBasedOnCategory($stateParams.category).then(function(response) {
                             return response;
                         });
+                    },
+                    categories: function(CategoryService){
+                        return CategoryService.getCategories().then(function(response) {
+                            return response;
+                        });
                     }
                 },
                 controller:'ProductDisplayController'
@@ -144,13 +155,18 @@
                         return ProductService.retrieveProductsBasedOnDesigner($stateParams.designerId).then(function(response) {
                             return response;
                         });
+                    },
+                    categories: function(CategoryService){
+                        return CategoryService.getCategories().then(function(response) {
+                            return response;
+                        });
                     }
                 },
                 controller:'DesignerDisplayController'
             })
             .state('designerOrder',{
                 url:'/designerOrder?designerId',
-                templateUrl: 'Orders/ProductOrdersPage.html',
+                templateUrl: 'Orders/DesignerOrdersPage.html',
                 resolve: {
                     ordersList: function(OrderService,$stateParams){
                         return OrderService.getActiveOrdersForDesigners($stateParams.designerId).then(function(response) {
@@ -158,7 +174,7 @@
                         });
                     }
                 },
-                controller:'ProductsOrderController'
+                controller:'DesignerOrdersController'
             })
             .state('orderedProductInfo',{
                 url:'/productInfo',

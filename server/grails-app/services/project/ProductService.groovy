@@ -21,4 +21,16 @@ class ProductService {
         return result
 
     }
+
+    def submitUserReview(productUserReview){
+        def result = [:]
+        if (productUserReview.hasErrors() == false && productUserReview.validate() &&  productUserReview.save(failOnError: true,flush: true)) {
+            result = [userReview: productUserReview, success: true]
+        } else {
+            result = [errors: productUserReview.errors.allErrors.collect {
+                messageSource.getMessage(it, null)
+            }, success      : false]
+        }
+        return result
+    }
 }

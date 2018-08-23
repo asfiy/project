@@ -5,16 +5,18 @@
     'use strict';
 
     angular.module('project').controller('ProductOrderController', productOrderController);
-    productOrderController.$inject = ['$scope', '$http', '$state', 'sessionService','$stateParams','selectedProduct','$mdDialog'];
-    function productOrderController($scope, $http, $state,sessionService,$stateParams,selectedProduct,$mdDialog) {
+    productOrderController.$inject = ['$scope', '$http', '$state', 'sessionService','$stateParams','selectedProduct','$mdDialog','similarProducts','ProductService'];
+    function productOrderController($scope, $http, $state,sessionService,$stateParams,selectedProduct,$mdDialog,similarProducts,ProductService) {
         $scope.sizes =['XS','S','M','L','XL','XXL'];
         $scope.size={};
         $scope.customStyle ={};
         $scope.selectedProduct = selectedProduct;
         $scope.myInterval = 3000;
         $scope.productAddedToCart = false;
+        $scope.similarProducts = similarProducts;
         var category = $stateParams.category;
         console.log(category);
+
         $scope.buyNow = function(){
 
                 var config = {
@@ -67,7 +69,17 @@
             $scope.sizeSelected = index;
          //  $scope.customStyle.style = {"background-color":"green"};
            // document.getElementById('sizeButton').style.backgroundColor = "red";
+        };
+
+        $scope.submitUserReview = function(userReview){
+            if(userReview != null){
+                ProductService.submitUserReview($scope.selectedProduct.id,userReview).then(function(response) {
+                    if(response.success){
+                        $scope.selectedProduct.userReview.push(response.userReview);
+                    }
+                });
+            }
         }
     }
-    })();
+})();
 
